@@ -42,7 +42,7 @@
       <div class="sidebar-info">
 
         <figure class="avatar-box">
-          <img src="./assets/images/my-avatar.png" alt="Richard hanrick" width="80">
+          <img src="./assets/images/avatar-1.png" alt="Richard hanrick" width="80">
         </figure>
 
         <div class="info-content">
@@ -74,12 +74,12 @@
             <div class="contact-info">
               <p class="contact-title">Email</p>
 
-              <a href="mailto:richard@example.com" class="contact-link">wangyifan9899@outlook.com</a>
+              <a href="mailto:wangyifan9899@outlook.com" class="contact-link">wangyifan9899@outlook.com</a>
             </div>
 
           </li>
 
-          <li class="contact-item">
+          <!-- <li class="contact-item">
 
             <div class="icon-box">
               <ion-icon name="phone-portrait-outline"></ion-icon>
@@ -91,7 +91,7 @@
               <a href="tel:+12133522795" class="contact-link">+1 (212) 518-6933</a>
             </div>
 
-          </li>
+          </li> -->
 
           <li class="contact-item">
 
@@ -158,6 +158,10 @@
           </li>
 
           <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Portfolio</button>
+          </li>
+
+          <li class="navbar-item">
             <button class="navbar-link" data-nav-link>Blog</button>
           </li>
 
@@ -200,7 +204,7 @@
 
         <section class="service">
 
-          <h3 class="h3 service-title">What i'm doing</h3>
+          <h3 class="h3 service-title">My Focus</h3>
 
           <ul class="service-list">
 
@@ -212,10 +216,10 @@
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">Backend Development</h4>
+                <h5 class="h5 service-item-title">Backend Development</h5>
 
                 <p class="service-item-text">
-                  Development and maintainence of a desktop application writen in C++.
+                  C++, Python, and Java
                 </p>
                 
               </div>
@@ -229,10 +233,10 @@
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">Web development</h4>
+                <h5 class="h5 service-item-title">Frontend Development</h5>
 
                 <p class="service-item-text">
-                  Development of a React web application.
+                  JavaScript, React, C#
                 </p>
               </div>
 
@@ -245,7 +249,7 @@
           - testimonials
         -->
 
-        <section class="testimonials">
+        <!-- <section class="testimonials">
 
           <h3 class="h3 testimonials-title">Projects</h3>
 
@@ -311,7 +315,7 @@
 
           </ul>
 
-        </section>
+        </section> -->
 
 
         <!--
@@ -340,8 +344,6 @@
 
               <h4 class="h3 modal-title" data-modal-title>Cloud Bookstore Application Deployed on AWS</h4>
 
-              <!-- <time datetime="2021-06-14">September 2022</time> -->
-
               <div data-modal-text>
                 <p>
                   Developed a cloud Bookstore application comprised of four microservices and a React application encapsulated with CloudFront and API Gateway on AWS, 
@@ -355,11 +357,7 @@
 
         </div>
 
-        <!--
-          - clients
-        -->
-
-        <!-- <section class="clients">
+        <section class="clients">
 
           <h3 class="h3 clients-title">Certificates</h3>
 
@@ -367,43 +365,25 @@
 
             <li class="clients-item">
               <a href="#">
-                <img src="./assets/images/meta-front-end.jpeg" alt="client logo">
+                <img src="./assets/images/IntroFrontend.jpeg" alt="client logo" height="120">
               </a>
             </li>
 
             <li class="clients-item">
               <a href="#">
-                <img src="./assets/images/logo-2-color.png" alt="client logo">
+                <img src="./assets/images/ReactBasics.jpeg" alt="client logo" height="120">
               </a>
             </li>
 
             <li class="clients-item">
               <a href="#">
-                <img src="./assets/images/logo-3-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-4-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-5-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-6-color.png" alt="client logo">
+                <img src="./assets/images/AdvancedReact.jpeg" alt="client logo" height="120">
               </a>
             </li>
 
           </ul>
 
-        </section> -->
+        </section>
 
       </article>
 
@@ -549,6 +529,131 @@
       </article>
 
       <!--
+        - #PORTFOLIO
+      -->
+
+      <article class="portfolio" data-page="portfolio">
+
+        <header>
+          <h2 class="h2 article-title">Projects</h2>
+        </header>
+
+        <section class="projects">
+
+          <ul class="filter-list">
+
+            <li class="filter-item">
+              <button class="active" data-filter-btn>All</button>
+            </li>
+
+            <!-- <li class="filter-item">
+              <button data-filter-btn>Web design</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Applications</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Web development</button>
+            </li> -->
+
+          </ul>
+
+          <div class="filter-select-box">
+
+            <button class="filter-select" data-select>
+
+              <div class="select-value" data-selecct-value>Select category</div>
+
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+
+            </button>
+
+            <ul class="select-list">
+
+              <li class="select-item">
+                <button data-select-item>All</button>
+              </li>
+
+              <!-- <li class="select-item">
+                <button data-select-item>Web design</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Applications</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Web development</button>
+              </li> -->
+
+            </ul>
+
+          </div>
+
+          <ul class="project-list">
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="https://github.com/YifanWang3744/book-subscription-system">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-2.png" alt="finance" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Cloud Bookstore Application Deployed on AWS</h3>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="https://github.com/YifanWang3744/Amazon-clone">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-1.jpg" alt="finance" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Full-stack eCommerce Platform</h3>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="https://github.com/YifanWang3744/Music-streaming-website">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-7.png" alt="finance" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Music Website Management System</h3>
+
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+      <!--
         - #BLOG
       -->
 
@@ -560,7 +665,7 @@
 
         <section class="blog-posts">
 
-          <ul class="blog-posts-list">
+          <!-- <ul class="blog-posts-list">
 
             <li class="blog-post-item">
               <a href="#">
@@ -730,7 +835,7 @@
               </a>
             </li>
 
-          </ul>
+          </ul> -->
 
         </section>
 
@@ -753,7 +858,7 @@
         <section class="mapbox" data-mapbox>
           <figure>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d199666.5651251294!2d-121.58334177520186!3d38.56165006739519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ac672b28397f9%3A0x921f6aaa74197fdb!2sSacramento%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d297595.388640863!2d-88.47335386395774!3d43.10925484294439!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8805b13070f8c38d%3A0x598e07b132f877bd!2sDelafield%2C%20WI!5e0!3m2!1sen!2sus!4v1696130460892!5m2!1sen!2sus"
               width="400" height="300" loading="lazy"></iframe>
           </figure>
         </section>
