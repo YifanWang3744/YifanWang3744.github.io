@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YIFAN WANG - PORTFOLIO</title>
+  <meta name="description"
+    content="Hello there, I'm Yifan Wang – a Software Engineer with passion to build something impactful.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="./output.css" />
+  <link rel="stylesheet" href="./styles.css" />
+
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Fancybox -->
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      content: ["./*.{html,js}"],
+      theme: {
+        extend: {
+          fontFamily: {
+            'nothingyoucoulddo': ['Nothing You Could Do', 'cursive'],
+            'signika': ['Signika', 'sans-serif'],
+          },
+        },
+      },
+      plugins: [],
+    }
+  </script>
+</head>
+
+<body class="dark:bg-black bg-white h-screen text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500">
+
+  <!-- Navbar -->
+  <header class="flex w-full overflow-hidden pt-10 pb-1">
+    <nav id="nav" x-data="{ open: false }" role="navigation" class="w-full">
+      <div class="container mx-auto flex flex-wrap items-center md:flex-no-wrap">
+        <div class="mr-4 md:mr-8">
+          <a href="../index.html" class="text-2xl font-signika font-bold">YIFAN WANG</a>
+        </div>
+
+        <div class="ml-auto md:hidden flex items-center justify-start">
+          <button onclick="menuToggle()" @click="open = !open"
+            class="tap-highlight-transparent text-black dark:text-white w-5 h-5 relative focus:outline-none">
+            <span class="sr-only">Open main menu</span>
+            <div class="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <span aria-hidden="true"
+                class="block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out"
+                :class="{'rotate-45': open,' -translate-y-1.5': !open }"></span>
+              <span aria-hidden="true"
+                class="block absolute  h-0.5 w-5 bg-current transform transition duration-500 ease-in-out"
+                :class="{'opacity-0': open } "></span>
+              <span aria-hidden="true"
+                class="block absolute h-0.5 w-5 bg-current transform  transition duration-500 ease-in-out"
+                :class="{'-rotate-45': open, ' translate-y-1.5': !open}"></span>
+            </div>
+          </button>
+        </div>
+
+        <div id="menu"
+          class="w-full h-0 transition-all duration-500 md:transition-none md:w-auto md:flex-grow md:flex md:items-center">
+          <ul id="ulMenu"
+            class="flex flex-col md:flex-row md:space-x-5 md:ml-auto mt-5 md:mt-0">
+
+            <li class="group transition duration-300">
+              <a href="../index.html" class="font-signika text-2xl tap-highlight-transparent">
+                ABOUT ME
+              </a>
+            </li>
+            <li class="group transition duration-300">
+              <a href="./skills.html" class="font-signika text-2xl">
+                SKILLS
+              </a>
+            </li>
+            <li class="group transition duration-300">
+              <a href="./projects.html" class="font-signika text-2xl">
+                PROJECTS
+              </a>
+            </li>
+            <li class="group transition duration-300">
+              <a href="./photography.html" class="font-signika text-2xl tap-highlight-transparent">
+                GALLERY
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Content -->
+  <div class="container mx-auto">
+    <h1 class="text-4xl pt-10 pb-8 font-bold">SKILLS</h1>
+
+    <div class="mt-10 max-w-4xl mx-auto text-center">
+        
+        <!-- Languages -->
+        <div class="mb-12">
+            <h4 class="text-2xl font-semibold mb-4">Languages</h4>
+            <div class="flex flex-wrap justify-center gap-3">
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">Java</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">C/C++</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">C#</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">Python</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">JavaScript</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">TypeScript</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">SQL</span>
+            </div>
+        </div>
+
+        <!-- Web Development -->
+        <div class="mb-12">
+            <h4 class="text-2xl font-semibold mb-4">Web Development</h4>
+            <div class="flex flex-wrap justify-center gap-3">
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">Spring Framework</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">Flask</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">FastAPI</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">Django</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">Express</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">Redux</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">React</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">Angular</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">NodeJS</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">Postman</span>
+            </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="mb-12">
+            <h4 class="text-2xl font-semibold mb-4">Tools</h4>
+            <div class="flex flex-wrap justify-center gap-3">
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">GCP</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">AWS</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">Unix/Linux</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">PostgreSQL</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">MySQL</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">MongoDB</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">Redis</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">RabbitMQ</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">Hibernate</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">Docker</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">Hadoop</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">Spark</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">Git</span>
+                <span class="px-4 py-2 bg-stone-200 rounded-full text-black text-sm font-medium">Jenkins</span>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="max-w-screen-xl py-16 mx-auto">
+      <div class="grid grid-cols-1 gap-8 text-center mx-auto">
+        <div>
+          <p class="font-signika"><b>Yifan Wang</b></p>
+          <p class="mt-4 text-sm text-gray-600 dark:text-gray-300">
+            yw3744@columbia.edu<br />(212) 518-6933
+          </p>
+
+          <div class="flex mx-auto">
+            <div class="mx-auto space-x-6 flex mt-8 text-gray-600 dark:text-gray-300">
+              <a class="transition duration-300 hover:opacity-75"
+                href="https://www.linkedin.com/in/yifanwang5" target="_blank" rel="noreferrer">
+                <span class="sr-only">LinkedIn</span>
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16">
+                  <path
+                    d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Fancybox -->
+  <script>
+    Fancybox.bind("[data-fancybox]", {});
+  </script>
+
+  <!-- Local scripts -->
+  <script src="./fade_in.js"></script>
+  <script src="./menu.js"></script>
+
+</body>
+</html>
