@@ -1,243 +1,90 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YIFAN WANG - PORTFOLIO</title>
-  <meta name="description"
-    content="Hello there, I'm Yifan Wang – a Software Engineer with passion to build something impactful.">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="./dist/assets/favicon.ico" />
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="./dist/output.css" />
-  <link rel="stylesheet" href="./styles.css" />
-
-  <!-- Alpine.js -->
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      content: ["./*.{html,js}"],
-      theme: {
-        extend: {
-          fontFamily: {
-            'nothingyoucoulddo': ['Nothing You Could Do', 'cursive'],
-            'signika': ['Signika', 'sans-serif'],
-          },
-        },
-      },
-      plugins: [],
-    }
-  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#999d9e">
+  <meta name="description" content="Yifan Wang is a software engineer based in Wisconsin, building reliable full-stack applications, distributed backends, and real-time industrial systems.">
+  <title>Yifan Wang — Software Engineer</title>
+  <link rel="icon" href="./dist/assets/favicon.ico">
+  <link rel="stylesheet" href="./dist/portfolio.css">
+  <script defer src="./dist/portfolio.js"></script>
 </head>
-
-<body
-  class="dark:bg-black bg-white bg-[radial-gradient(120%_60%_at_50%_0%,rgba(56,189,248,0.20)_0%,rgba(56,189,248,0.08)_35%,rgba(255,255,255,0)_70%)] dark:bg-[radial-gradient(120%_60%_at_50%_0%,rgba(56,189,248,0.28)_0%,rgba(59,130,246,0.16)_35%,rgba(0,0,0,0)_70%)] min-h-screen flex flex-col text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500">
-
-  <!-- Navbar -->
-  <header class="flex w-full overflow-hidden pt-10 pb-1">
-    <nav id="nav" x-data="{ open: false }" role="navigation" class="w-full">
-      <div class="container mx-auto flex flex-wrap items-center md:flex-no-wrap">
-        <div class="mr-4 md:mr-8">
-          <a href="./index.html" class="text-2xl font-signika font-bold">Yifan Wang</a>
-        </div>
-
-        <div class="ml-auto md:hidden flex items-center justify-start">
-          <button onclick="menuToggle()" @click="open = !open"
-            class="tap-highlight-transparent text-black dark:text-white w-5 h-5 relative focus:outline-none">
-            <span class="sr-only">Open main menu</span>
-            <div class="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <span aria-hidden="true"
-                class="block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out"
-                :class="{'rotate-45': open,' -translate-y-1.5': !open }"></span>
-              <span aria-hidden="true"
-                class="block absolute  h-0.5 w-5 bg-current transform transition duration-500 ease-in-out"
-                :class="{'opacity-0': open } "></span>
-              <span aria-hidden="true"
-                class="block absolute  h-0.5 w-5 bg-current transform transition duration-500 ease-in-out"
-                :class="{'-rotate-45': open, ' translate-y-1.5': !open}"></span>
-            </div>
-          </button>
-        </div>
-
-        <div id="menu"
-          class="w-full h-0 transition-all ease-out duration-500 md:transition-none md:w-auto md:flex-grow md:flex md:items-center">
-          <ul id="ulMenu"
-            class="flex flex-col duration-300 ease-out md:space-x-5 md:flex-row md:items-center md:ml-auto md:mt-0 md:pt-0">
-            <li class="group transition duration-300">
-              <a href="./index.html"
-                class="font-signika text-2xl px-3 py-1.5 rounded-md font-semibold text-black dark:text-white bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.28)_0%,rgba(56,189,248,0.16)_45%,rgba(56,189,248,0)_72%)] dark:bg-[radial-gradient(circle_at_center,rgba(125,211,252,0.34)_0%,rgba(125,211,252,0.18)_45%,rgba(125,211,252,0)_74%)]">About Me</a>
-            </li>
-            <li class="group transition duration-300">
-              <a href="./dist/experience.html"
-                class="font-signika text-2xl px-3 py-1.5 rounded-md hover:bg-black/5 dark:hover:bg-white/10">Experience</a>
-            </li>
-            <li class="group transition duration-300">
-              <a href="./dist/skills.html"
-                class="font-signika text-2xl px-3 py-1.5 rounded-md hover:bg-black/5 dark:hover:bg-white/10">Skills</a>
-            </li>
-            <li class="group transition duration-300">
-              <a href="./dist/projects.html"
-                class="font-signika text-2xl px-3 py-1.5 rounded-md hover:bg-black/5 dark:hover:bg-white/10">Projects</a>
-            </li>
-            <li class="group transition duration-300">
-              <a href="./dist/photography.html"
-                class="font-signika text-2xl px-3 py-1.5 rounded-md hover:bg-black/5 dark:hover:bg-white/10">Gallery</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-  <!-- Content -->
-  <div class="container mx-auto flex-1">
-    <div class="grid grid-cols-2 gap-8 md:gap-12 pt-6">
-      <div class="col-span-2 md:col-span-1">
-        <div
-          class="bg-white dark:bg-neutral-900 p-5 pb-20 m-4 md:m-8 shadow-lg border border-gray-100 dark:border-neutral-800 hover:rotate-0 transition duration-500 -rotate-6 relative">
-          <img src="./dist/assets/Avatar.png" alt="Avatar"
-            class="smooth-edges flex flex-col w-full aspect-square object-cover h-auto" />
-        </div>
-      </div>
-
-      <section class="font-normal text-center text-base md:text-start mx-3 col-span-2 md:col-span-1 my-auto">
-        <div class="block md:hidden">
-          <p class="text-3xl font-serif font-bold mb-1">Hello there,</p>
-          <p class="text-3xl font-serif font-bold mb-6">I'm YIFAN WANG <span class="animate-wave">👋</span></p>
-        </div>
-
-        <p class="hidden md:block text-3xl font-serif font-bold mb-6">Hello there, I'm Yifan
-          <span class="animate-wave">👋</span>
-        </p>
-
-        <ul class="list-disc pl-5 space-y-3 text-left text-lg">
-          <li>
-            I’m a software engineer with 3 years of full-stack development experience, focused on React web applications and .NET development
-          </li>
-          <li>
-            I enjoy taking photos 📷, and following Formula 1 🏎️ and soccer ⚽️
-          </li>
-          <li>
-            Thanks for visiting my portfolio. Feel free to connect! 
-          </li>
-        </ul>
-
-      </section>
-    </div>
+<body>
+  <div class="intro" id="intro" hidden>
+    <div class="intro-greeting" aria-hidden="true"><span class="intro-dot"></span><span id="greeting">Hello</span></div>
+    <button class="intro-skip" id="intro-skip" type="button">Skip intro <span aria-hidden="true">↗</span></button>
+    <div class="intro-curve" aria-hidden="true"></div>
   </div>
-
-  <!-- Footer -->
-  <footer class="bg-white/90 dark:bg-black/90 backdrop-blur-md">
-    <div class="max-w-screen-xl py-10 mx-auto">
-      <div class="grid grid-cols-1 gap-8 text-center mx-auto">
-        <div>
-          <div class="flex items-center justify-center gap-4">
-<a class="transition duration-300 hover:opacity-75 text-gray-600 dark:text-gray-300"
-              href="https://www.linkedin.com/in/yifanwang5" target="_blank" rel="noreferrer">
-              <span class="sr-only">LinkedIn</span>
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-              </svg>
-            </a>
-            <a class="transition duration-300 hover:opacity-75 text-gray-600 dark:text-gray-300"
-              href="https://github.com/YifanWang3744" target="_blank" rel="noreferrer">
-              <span class="sr-only">GitHub</span>
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M12 .5C5.65.5.5 5.66.5 12.03c0 5.1 3.29 9.43 7.86 10.96.58.11.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.38-3.88-1.38-.52-1.34-1.28-1.69-1.28-1.69-1.05-.72.08-.71.08-.71 1.16.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.2-3.1-.12-.29-.52-1.47.11-3.07 0 0 .98-.31 3.2 1.19a11 11 0 0 1 5.82 0c2.22-1.5 3.2-1.19 3.2-1.19.63 1.6.23 2.78.11 3.07.75.81 1.2 1.84 1.2 3.1 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.05.78 2.13 0 1.54-.01 2.78-.01 3.16 0 .31.21.67.8.56 4.56-1.53 7.85-5.86 7.85-10.96C23.5 5.66 18.35.5 12 .5Z" />
-              </svg>
-            </a>
-          </div>
-          <div class="mt-4 flex items-center justify-center gap-3 text-sm text-gray-600 dark:text-gray-300">
-            <span class="cursor-pointer select-none" data-copy-label="email" data-copy-value="yw3744@columbia.edu" role="button" tabindex="0">yw3744@columbia.edu</span>
-            <span aria-hidden="true">|</span>
-            <span class="cursor-pointer select-none" data-copy-label="phone" data-copy-value="(212) 518-6933" role="button" tabindex="0">(212) 518-6933</span>
-          </div>
+  <div id="page">
+    <a class="skip-link" href="#about">Skip to content</a>
+    <header class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-surface" aria-hidden="true"></div>
+      <nav class="top-nav" aria-label="Main navigation">
+        <a class="brand" href="#home"><span aria-hidden="true">©</span> <span>Code by Yifan</span></a>
+        <div class="top-nav-links"><a href="#projects">Projects</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+      </nav>
+      <div class="location-label"><span>Based in<br>Wisconsin, USA</span><span class="globe" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="19"/><ellipse cx="24" cy="24" rx="9" ry="19"/><path d="M5 24h38M8 14h32M8 34h32"/></svg></span></div>
+      <div class="hero-role"><svg class="arrow-diagonal" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M8 8l32 32M12 40h28V12"/></svg><p>Software Engineer<br>Full-stack Developer</p></div>
+      <h1 class="sr-only" id="hero-title">Yifan Wang — Software Engineer</h1>
+      <div class="name-marquee" aria-hidden="true"><div class="name-track" id="name-track"><span class="name-unit">Yifan Wang —&nbsp;</span><span class="name-unit">Yifan Wang —&nbsp;</span><span class="name-unit">Yifan Wang —&nbsp;</span></div></div>
+      <div class="hero-bottom"><a class="scroll-link" href="#about"><span aria-hidden="true">↓</span> Scroll to explore</a><button class="motion-toggle" id="motion-toggle" type="button" aria-pressed="false" hidden><span class="pause-symbol" aria-hidden="true">Ⅱ</span><span id="motion-label">Pause motion</span></button></div>
+    </header>
+    <main id="main">
+      <section class="about section-shell" id="about" aria-labelledby="about-title">
+        <p class="eyebrow reveal">A little about me</p>
+        <div class="about-grid">
+          <h2 class="about-title" id="about-title"><span class="reveal-line"><span>Building reliable</span></span> <span class="reveal-line"><span>software for complex,</span></span> <span class="reveal-line"><span>real-world systems.</span></span></h2>
+          <div class="about-aside reveal"><p>I’m Yifan, a software engineer at Elutions. I build industrial monitoring software, full-stack applications, and the backend systems that connect them.</p><p class="muted">From C++ and .NET to React and TypeScript, I enjoy making complex systems work simply.</p><a class="circle-button circle-dark" href="#experience"><span>My experience</span><span class="sr-only"> — go to experience</span></a></div>
         </div>
+      </section>
+      <section class="projects section-shell" id="projects" aria-labelledby="projects-title">
+        <div class="section-heading reveal"><h2 class="eyebrow" id="projects-title">Selected projects</h2><span class="section-count">01 — 03</span></div>
+        <div class="project-list">
+          <details class="project reveal" name="projects" id="workforce">
+            <summary><span class="project-index">01</span><h3 class="project-title">Workforce Services<br class="desktop-break"> Platform</h3><span class="project-category">Backend Development</span><span class="project-arrow" aria-hidden="true">↗</span></summary>
+            <div class="project-detail"><p>Developed backend services for profile management and application processing. Secured REST APIs with JWT and used RabbitMQ for asynchronous event processing, with account and workflow records in MySQL and profile data in MongoDB.</p><div class="project-meta"><p class="eyebrow">Built with</p><p>Java · Spring Boot · Spring Cloud · MySQL · MongoDB · RabbitMQ</p><a class="text-link" href="https://github.com/YifanWang3744/HR-Management-and-Employee-Onboarding-System" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></div></div>
+          </details>
+          <details class="project reveal" name="projects" id="bookstore">
+            <summary><span class="project-index">02</span><h3 class="project-title">Cloud Bookstore</h3><span class="project-category">Cloud / Full-stack</span><span class="project-arrow" aria-hidden="true">↗</span></summary>
+            <div class="project-detail"><p>Built a cloud bookstore with four FastAPI services and a React frontend, featuring catalog and order management, Google sign-in, and Amazon RDS persistence. Exposed backend APIs through API Gateway and hosted the frontend on S3 with CloudFront.</p><div class="project-meta"><p class="eyebrow">Built with</p><p>Python · FastAPI · React · AWS · SQLAlchemy</p><a class="text-link" href="https://github.com/YifanWang3744/book-subscription-system" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></div></div>
+          </details>
+          <details class="project reveal" name="projects" id="slam">
+            <summary><span class="project-index">03</span><h3 class="project-title">Improved ORB-SLAM2<br class="desktop-break"> System</h3><span class="project-category">Computer Vision</span><span class="project-arrow" aria-hidden="true">↗</span></summary>
+            <div class="project-detail"><p>Improved real-time localization using an image-pyramid method, achieving approximately 5% better trajectory accuracy.</p><div class="project-meta"><p class="eyebrow">Built with</p><p>C++ · Computer Vision · SLAM</p><a class="text-link" href="https://github.com/YifanWang3744/My-Improved-ORB-SLAM2" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></div></div>
+          </details>
+        </div>
+        <p class="project-hint reveal">Select a project to explore the details. <span aria-hidden="true">↗</span></p>
+      </section>
+      <section class="experience section-shell" id="experience" aria-labelledby="experience-title">
+        <div class="section-heading reveal"><h2 class="eyebrow" id="experience-title">Experience &amp; education</h2><span class="section-count">The journey so far</span></div>
+        <article class="experience-row reveal"><span class="row-index" aria-hidden="true">01</span><div class="experience-period"><p>May 2023 — Present</p><p class="muted">Delafield, Wisconsin</p></div><div class="experience-content"><h3>Elutions</h3><p class="experience-role">Software Developer</p><ul class="experience-points"><li>Led architecture and development of Chromium, a web-based industrial monitoring and control platform, delivering a beta release for customer evaluation.</li><li>Designed its distributed backend, reusable EF Core data-access layer, licensing and migration systems, and real-time telemetry services.</li><li>Owned feature development and production support for ControlMaestro, delivering 100+ features and resolving 300+ production issues.</li></ul><details class="impact-detail"><summary>More on the impact <span aria-hidden="true">+</span></summary><ul class="experience-points"><li>Approximately 60% of customers who received Chromium demos signed upgrade contracts.</li><li>Built a ControlMaestro upgrade tool that cut upgrade time by 50%.</li><li>Reduced OPC UA server scan time from 10 minutes to 2 minutes using caching and batched service calls.</li><li>Fixed React memory leaks, reducing heap usage by 20% in Memlab tests.</li></ul></details></div></article>
+        <article class="experience-row reveal"><span class="row-index" aria-hidden="true">02</span><div class="experience-period"><p>Sep 2021 — Feb 2023</p><p class="muted">New York, NY</p></div><div class="experience-content"><h3>Columbia University</h3><p class="experience-role">M.S. in Electrical Engineering</p><p class="coursework">Analysis of Algorithms · Introduction to Databases · Computer Systems · Cloud Computing</p></div></article>
+        <article class="experience-row reveal"><span class="row-index" aria-hidden="true">03</span><div class="experience-period"><p>Sep 2017 — Jun 2021</p><p class="muted">Chengdu, China</p></div><div class="experience-content"><h3>Sichuan University</h3><p class="experience-role">B.S. in Electrical Engineering</p></div></article>
+      </section>
+      <section class="skills section-shell" id="skills" aria-labelledby="skills-title">
+        <div class="skills-intro reveal"><p class="eyebrow">Tools of the trade</p><h2 id="skills-title">From the interface<br>to the infrastructure.</h2></div>
+        <div class="skills-grid">
+          <article class="skill-column reveal"><p class="skill-number">01</p><h3>Languages</h3><ul><li>C#</li><li>C++</li><li>SQL</li><li>TypeScript</li><li>JavaScript</li><li>Python</li><li>Java</li></ul></article>
+          <article class="skill-column reveal"><p class="skill-number">02</p><h3>Backend &amp; Web</h3><ul><li>.NET</li><li>EF Core</li><li>React</li><li>SignalR</li><li>YARP</li><li>FastAPI</li><li>Spring Boot</li></ul></article>
+          <article class="skill-column reveal"><p class="skill-number">03</p><h3>Data &amp; Messaging</h3><ul><li>PostgreSQL</li><li>SQL Server</li><li>TimescaleDB</li><li>Redis</li><li>NATS JetStream</li><li>RabbitMQ</li></ul></article>
+          <article class="skill-column reveal"><p class="skill-number">04</p><h3>Cloud &amp; Tooling</h3><ul><li>AWS</li><li>Docker</li><li>GitHub Actions</li><li>Jenkins</li><li>Git</li></ul></article>
+        </div>
+      </section>
+    </main>
+    <footer class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="contact-curve" aria-hidden="true"></div>
+      <div class="contact-content section-shell">
+        <div class="contact-heading reveal"><h2 id="contact-title">Let’s build something<br>together.</h2><svg class="arrow-diagonal" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M8 8l32 32M12 40h28V12"/></svg></div>
+        <div class="contact-action reveal"><span class="contact-line" aria-hidden="true"></span><a class="circle-button circle-blue magnetic" href="mailto:frankwang3744@gmail.com"><span>Get in touch</span></a></div>
+        <div class="contact-links reveal"><a class="outline-button" href="mailto:frankwang3744@gmail.com">frankwang3744@gmail.com</a><a class="outline-button" href="tel:+12125186933">+1 (212) 518-6933</a></div>
+        <div class="footer-bottom"><div class="footer-meta"><p class="eyebrow">Version</p><p>2026 © Edition</p></div><div class="footer-meta"><p class="eyebrow">Based in</p><p>Wisconsin, USA</p></div><div class="footer-socials"><p class="eyebrow">Elsewhere</p><div><a href="https://github.com/YifanWang3744" target="_blank" rel="noopener noreferrer">GitHub <span class="sr-only"> (opens in a new tab)</span></a><a href="https://linkedin.com/in/yifanwang5" target="_blank" rel="noopener noreferrer">LinkedIn <span class="sr-only"> (opens in a new tab)</span></a><a href="#home">Back to top <span aria-hidden="true">↑</span></a></div></div></div>
       </div>
-    </div>
-  </footer>
-
-  <script>
-    (() => {
-      function showCopyToast(message) {
-        let toast = document.getElementById("copy-toast");
-        if (!toast) {
-          toast = document.createElement("div");
-          toast.id = "copy-toast";
-          toast.className = "fixed left-1/2 -translate-x-1/2 bottom-20 z-[60] px-3 py-1.5 rounded-md text-xs md:text-sm bg-black/85 text-white opacity-0 pointer-events-none transition-opacity duration-200";
-          document.body.appendChild(toast);
-        }
-
-        toast.textContent = message;
-        toast.classList.remove("opacity-0");
-        toast.classList.add("opacity-100");
-
-        clearTimeout(window.__copyToastTimer);
-        window.__copyToastTimer = setTimeout(() => {
-          toast.classList.remove("opacity-100");
-          toast.classList.add("opacity-0");
-        }, 1200);
-      }
-
-      async function copyValue(value, label) {
-        try {
-          if (navigator.clipboard && window.isSecureContext) {
-            await navigator.clipboard.writeText(value);
-          } else {
-            const textArea = document.createElement("textarea");
-            textArea.value = value;
-            textArea.style.position = "fixed";
-            textArea.style.left = "-9999px";
-            document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
-            document.execCommand("copy");
-            document.body.removeChild(textArea);
-          }
-          showCopyToast(`Copied ${label}`);
-        } catch (error) {
-          showCopyToast("Copy failed");
-        }
-      }
-
-      function getCopyTarget(target) {
-        return target.closest("[data-copy-value]");
-      }
-
-      document.addEventListener("click", (event) => {
-        const target = getCopyTarget(event.target);
-        if (!target) return;
-        copyValue(target.dataset.copyValue || target.textContent.trim(), target.dataset.copyLabel || "text");
-      });
-
-      document.addEventListener("keydown", (event) => {
-        if (event.key !== "Enter" && event.key !== " ") return;
-        const target = getCopyTarget(event.target);
-        if (!target) return;
-        event.preventDefault();
-        copyValue(target.dataset.copyValue || target.textContent.trim(), target.dataset.copyLabel || "text");
-      });
-    })();
-  </script>
-
-  <!-- Scripts -->
-  <script src="./dist/fade_in.js"></script>
-  <script src="./dist/menu.js"></script>
+    </footer>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation menu" aria-haspopup="dialog" aria-controls="navigation-dialog" aria-expanded="false" hidden><span></span><span></span></button>
+  </div>
+  <dialog class="navigation-dialog" id="navigation-dialog" aria-labelledby="menu-title">
+    <div class="menu-inner"><button class="menu-close" id="menu-close" type="button" aria-label="Close navigation menu"><span></span><span></span></button><h2 class="eyebrow" id="menu-title">Navigation</h2><nav class="menu-links" aria-label="Expanded navigation"><a href="#home">Home</a><a href="#about">About</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav><div class="menu-socials"><p class="eyebrow">Elsewhere</p><div><a href="https://github.com/YifanWang3744" target="_blank" rel="noopener noreferrer">GitHub <span class="sr-only"> (opens in a new tab)</span></a><a href="https://linkedin.com/in/yifanwang5" target="_blank" rel="noopener noreferrer">LinkedIn <span class="sr-only"> (opens in a new tab)</span></a></div></div>
+  </dialog>
 </body>
-
 </html>

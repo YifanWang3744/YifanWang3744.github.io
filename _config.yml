@@ -1,0 +1,10 @@
+# GitHub Pages' existing branch-based Jekyll build serves the root index.html.
+# Keep implementation notes and obsolete source files out of the deployed site.
+exclude:
+  - outputs
+  - scripts
+  - src
+  - README.md
+  - dist/output.css
+  - dist/fade_in.js
+  - dist/menu.js
