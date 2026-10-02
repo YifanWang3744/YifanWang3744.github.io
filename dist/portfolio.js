@@ -207,7 +207,7 @@
         offset = ((offset % width) + width) % width;
         track.style.transform = `translate3d(${-offset}px,0,0)`;
         surface.style.transform = `translate3d(0,${window.scrollY * .1}px,0)`;
-        role.style.translate = `0 ${Math.min(window.scrollY * .08, 65)}px`;
+        role.style.translate = `0 ${-Math.min(window.scrollY * .08, 65)}px`;
       }
       boost *= .94;
       const distance = contact.getBoundingClientRect().top;

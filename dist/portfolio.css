@@ -41,7 +41,7 @@ svg path,svg circle,svg ellipse { stroke:currentColor; stroke-width:1.6; }
 .hero-role .arrow-diagonal { margin-bottom:30px; }
 .name-marquee { position:absolute; width:100%; left:0; bottom:10%; overflow:clip; }
 .name-track { display:flex; width:max-content; transform:translate3d(-8%,0,0); will-change:transform; }
-.name-unit { font-size:clamp(120px,21vw,380px); line-height:1.13; font-weight:400; letter-spacing:-.055em; white-space:nowrap; display:block; }
+.name-unit { font-size:clamp(120px,min(21vw,32svh),380px); line-height:1.13; font-weight:400; letter-spacing:-.055em; white-space:nowrap; display:block; }
 .hero-bottom { position:absolute; bottom:38px; left:3.4vw; right:3.4vw; display:flex; align-items:center; justify-content:space-between; gap:20px; font-size:12px; }
 .scroll-link { display:flex; align-items:center; gap:14px; padding:6px 0; }
 .scroll-link > span { font-size:24px; }
