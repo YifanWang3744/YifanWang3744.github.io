@@ -45,7 +45,9 @@ The sea-side `dist/assets/Avatar.png` is the approved Hero background. The
 other 34 photography files remain local with exact `.gitignore` rules.
 Project screenshots and the favicon remain tracked. The old photography URL
 redirects to the home page. The name scrolls in one direction at twice its
-previous base speed; the globe rotates automatically and respects Pause motion.
+previous base speed; the globe animates its longitude bands with a gentle axis tilt and respects Pause motion.
+Navigation and page sections place About and Experience before Projects.
+The Hero subtitle is “Backend-focused · Distributed systems”.
 
 For an explicit public-only package:
 

@@ -25,19 +25,30 @@ svg path,svg circle,svg ellipse { stroke:currentColor; stroke-width:1.6; }
 /* Hero */
 .hero { position:relative; height:100svh; min-height:680px; max-height:1300px; overflow:clip; background:var(--hero); color:white; isolation:isolate; }
 .hero-surface { position:absolute; inset:-12% 0 0; background:linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.08) 50%,rgba(0,0,0,.3)),url("./assets/Avatar.png") center bottom / cover no-repeat; z-index:-1; }
-.top-nav { display:flex; justify-content:space-between; align-items:center; position:relative; padding:38px 3.4vw; font-size:16px; z-index:2; }
-.brand { display:inline-flex; gap:5px; align-items:center; }
-.brand > span:first-child { transition:transform .6s var(--ease); }
-.brand:hover > span:first-child { transform:rotate(360deg); }
+.top-nav { display:flex; justify-content:flex-end; align-items:center; position:relative; padding:38px 3.4vw; font-size:16px; z-index:2; }
 .top-nav-links { display:flex; gap:40px; }
 .top-nav-links a,.footer-socials a,.menu-socials a { position:relative; padding-block:8px; }
 .top-nav-links a::after { content:""; width:5px; height:5px; border-radius:50%; background:currentColor; position:absolute; bottom:-3px; left:calc(50% - 2.5px); transform:scale(0); transition:transform .25s; }
 .top-nav-links a:hover::after,.top-nav-links a:focus-visible::after { transform:scale(1); }
 .location-label { position:absolute; left:0; top:32%; padding:20px 20px 20px 36px; display:flex; gap:30px; align-items:center; background:var(--ink); border-radius:0 100px 100px 0; font-size:16px; line-height:1.45; }
 .globe { width:62px; height:62px; display:grid; place-items:center; border-radius:50%; background:#333438; }
-.globe svg { width:38px; height:38px; transform:rotate(-20deg); animation:globe-spin 12s linear infinite paused; }
-html.motion-running .globe svg { animation-play-state:running; }
-@keyframes globe-spin { from { transform:rotate(-20deg); } to { transform:rotate(340deg); } }
+/* Longitude bands turn around the sphere; the axis gently tilts like the reference. */
+.globe-grid { position:relative; width:32px; height:32px; border-radius:50%; overflow:hidden; color:white; }
+.globe-wrap { position:absolute; inset:0; border-radius:50%; overflow:hidden; box-shadow:inset 0 0 0 1.6px currentColor; transform:rotate(15deg); animation:globe-tilt 5.4s cubic-bezier(.35,0,.65,1) -1.8s infinite paused; }
+.meridian { position:absolute; top:50%; left:50%; width:100%; height:100%; transform:translate(-50%,-50%); border-radius:50%; box-shadow:inset 1px 0 0 1px currentColor; animation:globe-meridian 2.7s linear infinite paused; }
+.meridian:nth-child(1) { animation-delay:-1.8s; }
+.meridian:nth-child(2) { animation-delay:-.9s; }
+.latitude { position:absolute; top:50%; left:50%; width:150%; height:55%; transform:translate(-50%,-50%); border-radius:50%; box-shadow:inset 0 0 0 1.4px currentColor; }
+.equator { position:absolute; top:50%; left:50%; width:150%; height:1.4px; transform:translate(-50%,-50%); background:currentColor; }
+html.motion-running .globe-wrap,html.motion-running .meridian { animation-play-state:running; }
+@keyframes globe-tilt { 0%,100% { transform:rotate(15deg); } 50% { transform:rotate(-15deg); } }
+@keyframes globe-meridian {
+  0% { width:100%; border-radius:50%; box-shadow:inset 1px 0 0 1px currentColor; }
+  49% { border-radius:50%; box-shadow:inset 1px 0 0 1px currentColor; background:transparent; }
+  50% { width:1.7px; border-radius:0; background:currentColor; }
+  51% { border-radius:50%; box-shadow:inset -1px 0 0 1px currentColor; background:transparent; }
+  100% { width:100%; border-radius:50%; box-shadow:inset -1px 0 0 1px currentColor; }
+}
 .hero-role { position:absolute; right:7.5vw; top:26%; font-size:clamp(24px,2.35vw,40px); line-height:1.35; letter-spacing:-.025em; }
 .arrow-diagonal { width:40px; height:40px; }
 .hero-role .arrow-diagonal { margin-bottom:30px; }
@@ -70,10 +81,7 @@ html.motion-running .globe svg { animation-play-state:running; }
 .about-title { font-size:clamp(32px,3.65vw,66px); line-height:1.25; letter-spacing:-.035em; }
 .reveal-line { display:block; overflow:clip; padding-bottom:.06em; }
 .reveal-line > span { display:block; }
-.about-aside { max-width:500px; font-size:16px; line-height:1.65; }
-.about-points { margin:24px 0 0; padding-left:18px; font-size:15px; line-height:1.7; }
-.about-points li + li { margin-top:18px; }
-.about-points strong { font-weight:600; }
+.about-aside { max-width:430px; margin-inline:auto; align-self:center; display:flex; flex-direction:column; align-items:center; text-align:center; font-size:16px; line-height:1.65; }
 .circle-button { position:relative; display:grid; place-items:center; width:clamp(150px,13vw,200px); height:clamp(150px,13vw,200px); border-radius:50%; isolation:isolate; overflow:hidden; color:#fff; font-size:15px; transition:transform .5s var(--ease); }
 .circle-button::before { content:""; position:absolute; inset:0; z-index:-1; border-radius:50%; transform:translateY(105%); transition:transform .55s var(--ease); }
 .circle-button:hover::before,.circle-button:focus-visible::before { transform:translateY(0); }
@@ -202,10 +210,9 @@ html.motion-paused .reveal,html.motion-paused .reveal-line > span { opacity:1; t
   .top-nav { padding:28px 24px; font-size:14px; }
   .top-nav-links { gap:20px; font-size:13px; }
   .has-menu .top-nav-links { display:none; }
-  .top-nav-links a:first-child { display:none; }
   .location-label { top:27%; padding:15px 15px 15px 24px; gap:20px; font-size:13px; }
   .globe { width:48px; height:48px; }
-  .globe svg { width:30px; height:30px; }
+  .globe-grid { width:28px; height:28px; }
   .hero-role { left:24px; right:auto; top:auto; bottom:16%; font-size:23px; }
   .hero-role .arrow-diagonal { width:30px; height:30px; margin-bottom:22px; }
   .name-marquee { bottom:35%; }
@@ -294,4 +301,28 @@ html.motion-paused .reveal,html.motion-paused .reveal-line > span { opacity:1; t
 
 .skill-column li { position:relative; padding-left:16px; }
 .skill-column li::before { content:"•"; position:absolute; left:0; color:var(--muted); font-size:.8em; }
-@media (prefers-reduced-motion:reduce) { .globe svg { animation:none; } }
+@media (prefers-reduced-motion:reduce) { .globe-wrap,.meridian { animation:none; } }
+
+/* Work history uses the full row, with two clearly separated platform descriptions. */
+.work-row { grid-template-columns:32px minmax(0,1fr); gap:18px 40px; }
+.work-row .experience-period { display:flex; align-items:baseline; gap:24px; }
+.work-row .experience-period p + p { margin-top:0; }
+.work-row .experience-content { grid-column:2; }
+.job-heading { display:flex; justify-content:space-between; align-items:baseline; gap:24px; }
+.job-heading .experience-role { margin-top:0; color:var(--muted); }
+.experience-platforms { display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,5vw,80px); margin-top:36px; }
+.experience-platforms .experience-project { margin-top:0; border-top:1px solid var(--line); padding-top:24px; }
+.experience-platforms h4 { font-size:25px; letter-spacing:-.025em; }
+.platform-description { margin-top:6px; color:var(--muted); font-size:13px; line-height:1.5; }
+.experience-platforms .experience-points { margin-top:24px; font-size:15px; line-height:1.75; }
+@media (max-width:700px) {
+  .work-row { grid-template-columns:18px minmax(0,1fr); gap:18px 12px; }
+  .work-row .experience-period { display:block; }
+  .work-row .experience-period p + p { margin-top:4px; }
+  .job-heading { display:block; }
+  .job-heading .experience-role { margin-top:10px; }
+  .experience-platforms { grid-template-columns:1fr; gap:32px; margin-top:28px; }
+  .experience-platforms .experience-points { font-size:14px; }
+}
+
+.hero-focus { display:block; margin-top:12px; font-size:clamp(13px,1.1vw,17px); letter-spacing:0; line-height:1.5; color:rgba(255,255,255,.9); }

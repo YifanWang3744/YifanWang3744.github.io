@@ -40,7 +40,10 @@
     setLock('intro', false);
     restoreAnchor();
     if (skippedByUser) {
-      document.querySelector('.brand').focus({ preventScroll: true });
+      const introFocus = window.matchMedia('(max-width: 700px)').matches
+        ? document.getElementById('menu-toggle')
+        : document.querySelector('.top-nav-links a');
+      introFocus.focus({ preventScroll: true });
     }
     window.dispatchEvent(new Event('portfolio:intro-finished'));
   }
