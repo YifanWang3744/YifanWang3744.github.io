@@ -47,8 +47,9 @@ The sea-side `dist/assets/Avatar.png` is the approved Hero background. The
 other 34 photography files remain local with exact `.gitignore` rules.
 Project screenshots and the favicon remain tracked. The old photography URL
 redirects to the home page. The name scrolls in one direction at twice its
-previous base speed. The Hero location badge and rotating globe are restored. The profession arrow
-and Pause motion control are removed; profession text occupies the former arrow position.
+previous base speed. Its type scale matches the measured Dennis reference:
+15vw on desktop and 144px on mobile, with normal letter spacing. The Hero location badge and rotating globe are restored. The profession arrow is restored above the role text; the Pause motion control
+remains removed.
 Navigation and page sections place About and Experience before Projects.
 The Hero subtitle is “Backend-focused · Distributed systems”.
 

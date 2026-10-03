@@ -431,9 +431,13 @@ html.motion-paused .reveal,html.motion-paused .reveal-line > span { opacity:1; t
 
 /* Current section reveals the same label, with a stronger weight. */
 .section-nav a[aria-current] > span { font-weight:400; }
-/* Keep the mobile role at the former arrow's position after removing it. */
-@media (max-width:700px) { .hero-role { bottom:calc(16% + 60px); } }
+
 
 /* Platform descriptions sit below their names again. */
 .platform-heading { display:block; }
 .platform-heading .platform-description { margin-top:4px; }
+
+/* Match Dennis's measured marquee scale: 15vw desktop, 144px mobile. */
+.name-marquee { overflow:visible; }
+.name-unit { font-size:15vw; line-height:1; letter-spacing:normal; }
+@media (max-width:700px) { .name-unit { font-size:144px; } }
