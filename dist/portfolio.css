@@ -529,7 +529,7 @@ html.page-transitioning { overflow:hidden; }
 h1[tabindex="-1"]:focus { outline:none; }
 
 /* Original Titanium PNG layers: independent hover transforms inside the scroll mask. */
-.build-photo { position:relative; aspect-ratio:4 / 3; background:#0c0d0d; isolation:isolate; user-select:none; background-image:radial-gradient(circle,#303232 1.5px,transparent 2px); background-size:64px 64px; }
+.build-photo { position:relative; aspect-ratio:4 / 3; background:transparent; isolation:isolate; user-select:none; }
 .titanium-scene { position:absolute; inset:-20% 0; will-change:transform; }
 .titanium-stage { position:absolute; width:80%; aspect-ratio:552 / 520; left:10%; top:50%; transform:translateY(-50%); }
 .titanium-panel { position:absolute; aspect-ratio:2084 / 1250; background:#252525; border-radius:10px; overflow:hidden; box-shadow:0 10px 25px #0005; transform:translate(var(--panel-x,0%),var(--panel-y,0%)) rotateX(16deg) rotateY(-25deg) rotateZ(7deg); transition:transform .8s cubic-bezier(.22,1,.36,1); }
