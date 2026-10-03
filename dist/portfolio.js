@@ -40,9 +40,7 @@
     setLock('intro', false);
     restoreAnchor();
     if (skippedByUser) {
-      const introFocus = window.matchMedia('(max-width: 700px)').matches
-        ? document.getElementById('menu-toggle')
-        : document.querySelector('.brand');
+      const introFocus = document.querySelector('.brand');
       introFocus.focus({ preventScroll: true });
     }
     window.dispatchEvent(new Event('portfolio:intro-finished'));
@@ -77,7 +75,7 @@
       greeting.textContent = 'Hello · 你好';
       timers.push(setTimeout(finishIntro, 350));
     } else {
-      const sequence = [['Hello',400],['Bonjour',180],['Hola',180],['Ciao',180],['Olá',180],['こんにちは',220],['你好',420],['Hallo',180],['Hello',200]];
+      const sequence = [['Hello',400],['你好',420],['Bonjour',180],['Hola',180],['Ciao',180],['Olá',180],['こんにちは',220],['Hallo',180],['Hello',200]];
       let time = 0;
       sequence.forEach(([word, duration]) => {
         timers.push(setTimeout(() => { if (!introLeaving && !introFinished) greeting.textContent = word; }, time));
@@ -87,67 +85,38 @@
     }
   } catch { finishIntro(); }
 
-  function initializeMenu() {
-    const toggle = document.getElementById('menu-toggle');
-    const dialog = document.getElementById('navigation-dialog');
-    const close = document.getElementById('menu-close');
-    if (typeof dialog.showModal !== 'function') return; // Top navigation remains usable.
-    root.classList.add('has-menu');
-    const links = [...dialog.querySelectorAll('.menu-links a')];
-    let closeTimer;
-    let afterClose;
-    toggle.hidden = false;
-    const updateToggle = () => toggle.classList.toggle('is-visible', window.scrollY > 100 || window.innerWidth <= 700);
-    updateToggle();
-    window.addEventListener('scroll', updateToggle, { passive: true });
-    window.addEventListener('resize', updateToggle, { passive: true });
-    function completeClose() {
-      clearTimeout(closeTimer);
-      if (dialog.open) dialog.close();
-      dialog.classList.remove('is-closing');
-      setLock('menu', false);
-      toggle.setAttribute('aria-expanded', 'false');
-      if (afterClose) {
-        const hash = afterClose;
-        afterClose = undefined;
-        if (location.hash === hash) {
-          document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: reduced.matches || paused ? 'instant' : 'smooth' });
-        } else { location.hash = hash; }
-        // Focus the destination for keyboard and screen-reader users.
-        const destination = document.getElementById(hash.slice(1));
-        if (destination) {
-          destination.setAttribute('tabindex', '-1');
-          destination.focus({ preventScroll: true });
-          destination.addEventListener('blur', () => destination.removeAttribute('tabindex'), { once: true });
-        }
-      } else { toggle.focus({ preventScroll: true }); }
+  function initializeSectionNavigation() {
+    const nav = document.querySelector('.section-nav');
+    const links = [...nav.querySelectorAll('a')];
+    const sections = links.map(link => document.querySelector(link.getAttribute('href')));
+    let frame;
+    function update() {
+      frame = undefined;
+      const probe = window.innerHeight * .35;
+      let current = sections[0];
+      sections.forEach(section => { if (section.getBoundingClientRect().top <= probe) current = section; });
+      if (window.scrollY > 0 && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) current = sections.at(-1);
+      links.forEach(link => {
+        if (link.getAttribute('href') === `#${current.id}`) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+      nav.classList.toggle('is-on-dark', current.id === 'home' || current.id === 'contact');
     }
-    function closeMenu(hash) {
-      if (!dialog.open || dialog.classList.contains('is-closing')) return;
-      afterClose = hash;
-      if (reduced.matches || paused) return completeClose();
-      dialog.classList.add('is-closing');
-      closeTimer = setTimeout(completeClose, 460);
-    }
-    toggle.addEventListener('click', () => {
-      if (dialog.open || !introFinished) return;
-      const current = location.hash || '#home';
-      links.forEach(link => current === link.getAttribute('href') ? link.setAttribute('aria-current', 'location') : link.removeAttribute('aria-current'));
-      dialog.showModal();
-      setLock('menu', true);
-      toggle.setAttribute('aria-expanded', 'true');
-      close.focus({ preventScroll: true });
-    });
-    close.addEventListener('click', () => closeMenu());
-    dialog.addEventListener('cancel', event => { event.preventDefault(); closeMenu(); });
-    dialog.addEventListener('click', event => {
-      if (event.target !== dialog) return;
-      const rect = dialog.getBoundingClientRect();
-      if (event.clientX < rect.left || event.clientX > rect.right) closeMenu();
-    });
-    dialog.addEventListener('close', () => { setLock('menu', false); toggle.setAttribute('aria-expanded', 'false'); });
-    links.forEach(link => link.addEventListener('click', event => { event.preventDefault(); closeMenu(link.getAttribute('href')); }));
-    window.addEventListener('pagehide', () => { if (dialog.open) { afterClose = undefined; completeClose(); } });
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    window.addEventListener('scroll', schedule, { passive:true });
+    window.addEventListener('resize', schedule, { passive:true });
+    window.addEventListener('portfolio:intro-finished', update);
+    links.forEach(link => link.addEventListener('click', event => {
+      event.preventDefault();
+      const destination = document.querySelector(link.getAttribute('href'));
+      history.replaceState(null, '', link.getAttribute('href'));
+      destination.scrollIntoView({ behavior:'instant', block:'start' });
+      destination.setAttribute('tabindex', '-1');
+      destination.focus({ preventScroll:true });
+      destination.addEventListener('blur', () => destination.removeAttribute('tabindex'), { once:true });
+      update();
+    }));
+    update();
   }
 
   function initializeReveals() {
@@ -286,8 +255,29 @@
     window.addEventListener('resize', fit, { passive: true });
     document.fonts?.ready.then(fit);
   }
+  function fitContentWidths() {
+    const summary = document.querySelector('.about-summary');
+    const lines = [...summary.querySelectorAll('span')];
+    const contactLine = document.getElementById('contact-first-line');
+    const contactLinks = document.querySelector('.contact-links');
+    function fit() {
+      summary.style.fontSize = '16px';
+      const available = summary.clientWidth;
+      const widths = lines.map(line => {
+        line.style.width = 'max-content';
+        const width = line.getBoundingClientRect().width;
+        line.style.width = '';
+        return width;
+      });
+      summary.style.fontSize = `${Math.min(16, 16 * available / Math.max(...widths))}px`;
+      contactLinks.style.width = `${contactLine.getBoundingClientRect().width}px`;
+    }
+    fit();
+    window.addEventListener('resize', fit, { passive:true });
+    document.fonts?.ready.then(fit);
+  }
   // Independent enhancements must not make essential content depend on each other.
-  [initializeMenu, initializeReveals, initializeMotion, fitHeroSubtitle].forEach(initialize => {
+  [initializeSectionNavigation, initializeReveals, initializeMotion, fitHeroSubtitle, fitContentWidths].forEach(initialize => {
     try { initialize(); } catch (error) { console.warn('Portfolio enhancement unavailable:', error); }
   });
 })();

@@ -17,11 +17,11 @@ opening the HTML directly from disk.
 
 ## Files and behavior
 
-- `index.html`: Hero, About, Projects, Experience & Education, Skills, Contact.
+- `index.html`: Hero, About, Experience & Education, Projects, Skills, Contact.
 - `dist/portfolio.css`: Layout, responsive styles, curves, transitions, and
   `prefers-reduced-motion` behavior; fonts use the system sans-serif stack.
 - `dist/portfolio.js`: Multilingual intro (including 你好), moving name,
-  scroll reveals, native modal navigation, and a small contact-button effect.
+  scroll reveals, a persistent section rail, and a small contact-button effect.
 - `dist/projects.html`, `experience.html`, `skills.html`, `photography.html`:
   Compatibility redirects with ordinary fallback links.
 - `_config.yml`: Excludes planning notes, packaging tools, and unused legacy
@@ -29,8 +29,9 @@ opening the HTML directly from disk.
 
 Projects use native `details`/`summary`, so they work without JavaScript.
 The intro plays on a full page load, can be skipped with Escape or its button,
-and has an independent four-second cleanup timer. The menu supports Escape,
-backdrop dismissal, keyboard focus containment, and return focus. Initial
+and has an independent four-second cleanup timer. Its second greeting is 你好.
+The labeled right-side rail highlights the current section and directly jumps
+to each section, with keyboard focus transferred to the destination. Initial
 hash links remain at their destination after the intro. Use **Pause motion**
 to stop the rotating globe, moving name, and scroll effects; reduced-motion preferences show
 a short “Hello · 你好” greeting and static content.
@@ -101,3 +102,7 @@ Experience dates share one column and a larger font. More work on GitHub
 opens the profile. The footer uses a shrinking elliptical boundary and
 bottom-anchored desktop parallax; reduced-motion preferences and Pause motion
 show the contact content without movement. Contact links use labeled rows.
+
+The About summary uses three balanced, equally wide lines. The contact-method
+grid matches the width of “Let’s build something”; version metadata is centered
+on the page. The old modal menu and circular menu button have been removed.
