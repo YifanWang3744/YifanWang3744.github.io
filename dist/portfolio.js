@@ -75,11 +75,12 @@
       greeting.textContent = 'Hello · 你好';
       timers.push(setTimeout(finishIntro, 350));
     } else {
-      const sequence = [['Hello',400],['你好',420],['Bonjour',180],['Hola',180],['Ciao',180],['Olá',180],['こんにちは',220],['Hallo',180],['Hello',200]];
+      const sequence = ['Hello', '你好', 'Bonjour', 'Hola', 'Ciao', 'Olá', 'こんにちは', 'Hallo', 'Hello'];
+      const greetingDuration = 240;
       let time = 0;
-      sequence.forEach(([word, duration]) => {
+      sequence.forEach(word => {
         timers.push(setTimeout(() => { if (!introLeaving && !introFinished) greeting.textContent = word; }, time));
-        time += duration;
+        time += greetingDuration;
       });
       timers.push(setTimeout(() => leaveIntro(), time));
     }
@@ -100,7 +101,16 @@
         if (link.getAttribute('href') === `#${current.id}`) link.setAttribute('aria-current', 'location');
         else link.removeAttribute('aria-current');
       });
-      nav.classList.toggle('is-on-dark', current.id === 'home' || current.id === 'contact');
+      // Each rail item fades as its own position crosses the white-content boundaries.
+      const start = hero.getBoundingClientRect().bottom;
+      const end = document.getElementById('contact').getBoundingClientRect().top;
+      links.forEach(link => {
+        const box = link.getBoundingClientRect();
+        const midpoint = box.top + box.height / 2;
+        const opacity = Math.max(0, Math.min(1, (midpoint - start) / 60, (end - midpoint) / 60));
+        link.style.opacity = String(opacity);
+        link.style.visibility = opacity > 0 ? 'visible' : 'hidden';
+      });
     }
     const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
     window.addEventListener('scroll', schedule, { passive:true });
@@ -261,15 +271,20 @@
     const contactLine = document.getElementById('contact-first-line');
     const contactLinks = document.querySelector('.contact-links');
     function fit() {
-      summary.style.fontSize = '16px';
-      const available = summary.clientWidth;
-      const widths = lines.map(line => {
-        line.style.width = 'max-content';
-        const width = line.getBoundingClientRect().width;
-        line.style.width = '';
-        return width;
-      });
-      summary.style.fontSize = `${Math.min(16, 16 * available / Math.max(...widths))}px`;
+      summary.style.width = '100%';
+      lines.forEach(line => { line.style.fontSize = ''; });
+      if (window.innerWidth > 700) {
+        const available = summary.clientWidth;
+        const widths = lines.map(line => {
+          line.style.width = 'max-content';
+          const width = line.getBoundingClientRect().width;
+          line.style.width = '';
+          return width;
+        });
+        const target = Math.min(available, Math.max(...widths));
+        summary.style.width = `${target}px`;
+        lines.forEach((line, index) => { line.style.fontSize = `${16 * target / widths[index]}px`; });
+      }
       contactLinks.style.width = `${contactLine.getBoundingClientRect().width}px`;
     }
     fit();

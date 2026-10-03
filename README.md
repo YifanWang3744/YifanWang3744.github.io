@@ -21,7 +21,7 @@ opening the HTML directly from disk.
 - `dist/portfolio.css`: Layout, responsive styles, curves, transitions, and
   `prefers-reduced-motion` behavior; fonts use the system sans-serif stack.
 - `dist/portfolio.js`: Multilingual intro (including 你好), moving name,
-  scroll reveals, a persistent section rail, and a small contact-button effect.
+  scroll reveals, a scroll-fading section rail, and a small contact-button effect.
 - `dist/projects.html`, `experience.html`, `skills.html`, `photography.html`:
   Compatibility redirects with ordinary fallback links.
 - `_config.yml`: Excludes planning notes, packaging tools, and unused legacy
@@ -103,6 +103,13 @@ opens the profile. The footer uses a shrinking elliptical boundary and
 bottom-anchored desktop parallax; reduced-motion preferences and Pause motion
 show the contact content without movement. Contact links use labeled rows.
 
-The About summary uses three balanced, equally wide lines. The contact-method
+The About summary uses two balanced desktop lines with natural word spacing,
+and wraps naturally on mobile. The contact-method
 grid matches the width of “Let’s build something”; version metadata is centered
 on the page. The old modal menu and circular menu button have been removed.
+
+Every intro greeting uses the same 240ms duration. Section rail marks sit
+to the left of aligned labels; individual links fade over 60px as they cross
+white-section boundaries and remain hidden over Home/Contact. Chromium and
+ControlMaestro share two columns within the right-side work-content column
+on desktop, while mobile stacks them.

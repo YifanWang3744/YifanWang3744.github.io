@@ -81,7 +81,7 @@ html.motion-running .globe-wrap,html.motion-running .meridian { animation-play-s
 .about-title { font-size:clamp(32px,3.65vw,66px); line-height:1.25; letter-spacing:-.035em; }
 .reveal-line { display:block; overflow:clip; padding-bottom:.06em; }
 .reveal-line > span { display:block; }
-.about-aside { max-width:430px; margin-inline:auto; align-self:center; display:flex; flex-direction:column; align-items:center; text-align:left; font-size:16px; line-height:1.65; }
+.about-aside { max-width:600px; margin-inline:auto; align-self:center; display:flex; flex-direction:column; align-items:center; text-align:left; font-size:16px; line-height:1.65; }
 .circle-button { position:relative; display:grid; place-items:center; width:clamp(150px,13vw,200px); height:clamp(150px,13vw,200px); border-radius:50%; isolation:isolate; overflow:hidden; color:#fff; font-size:15px; transition:transform .5s var(--ease); }
 .circle-button::before { content:""; position:absolute; inset:0; z-index:-1; border-radius:50%; transform:translateY(105%); transition:transform .55s var(--ease); }
 .circle-button:hover::before,.circle-button:focus-visible::before { transform:translateY(0); }
@@ -333,16 +333,14 @@ html.motion-paused .reveal,html.motion-paused .reveal-line > span { opacity:1; t
 .top-nav { padding-right:145px; }
 .hero-role { right:max(12vw,145px); }
 .section-nav { position:fixed; z-index:80; right:16px; top:50%; transform:translateY(-50%); display:grid; gap:4px; width:108px; color:var(--muted); }
-.section-nav a { display:flex; justify-content:flex-end; align-items:center; gap:12px; min-height:34px; font-size:11px; padding:6px 0; transition:color .2s; }
-.section-nav i { display:block; width:8px; height:2px; background:currentColor; opacity:.45; transition:width .25s,opacity .25s; }
+.section-nav a { display:flex; justify-content:flex-start; align-items:center; gap:12px; min-height:34px; font-size:11px; padding:6px 0; transition:color .2s; }
+.section-nav i { display:block; width:20px; height:2px; background:currentColor; opacity:.45; transition:width .25s,opacity .25s; }
 .section-nav a[aria-current] { color:var(--ink); font-weight:600; }
 .section-nav a[aria-current] i { width:20px; opacity:1; }
 .section-nav a:hover { color:var(--ink); }
-.section-nav.is-on-dark { color:#b9bbc0; }
-.section-nav.is-on-dark a[aria-current],.section-nav.is-on-dark a:hover { color:white; }
 .brand:hover .brand-code,.brand:focus-visible .brand-code { opacity:0; }
-.about-summary { width:100%; max-width:360px; }
-.about-summary > span { display:block; white-space:nowrap; text-align:justify; text-align-last:justify; }
+.about-summary { width:100%; max-width:560px; font-size:16px; }
+.about-summary > span { display:block; white-space:nowrap; text-align:left; text-align-last:left; letter-spacing:normal; word-spacing:normal; }
 .contact-links { max-width:100%; gap:28px; }
 .contact-method { gap:12px; padding:16px 0 20px; }
 .contact-method-value { font-size:clamp(15px,1.5vw,23px); }
@@ -366,3 +364,20 @@ html.motion-paused .reveal,html.motion-paused .reveal-line > span { opacity:1; t
 
 .about-aside { min-width:0; width:100%; }
 @media (max-width:700px) { .about-grid { grid-template-columns:minmax(0,1fr); } }
+
+.about-grid { grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:4vw; }
+.about-title { font-size:clamp(32px,3.2vw,56px); }
+.experience-platforms { grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:32px; }
+.experience-row { padding-right:0; }
+.section-nav a { visibility:hidden; opacity:0; }
+.section-nav i { flex:0 0 20px; }
+.section-nav a[aria-current] i { height:3px; }
+@media (max-width:1000px) and (min-width:701px) { .about-title { font-size:30px; } .experience-platforms { gap:22px; } }
+@media (max-width:700px) {
+  .about-grid { grid-template-columns:minmax(0,1fr); }
+  .about-title { font-size:clamp(29px,7.5vw,48px); }
+  .about-summary { font-size:15px; line-height:1.65; }
+  .about-summary > span { display:inline; white-space:normal; font-size:inherit; }
+  .experience-platforms { grid-template-columns:1fr; }
+  .section-nav i { flex-basis:10px; }
+}
