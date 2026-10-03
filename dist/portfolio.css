@@ -399,3 +399,32 @@ html.motion-paused .reveal,html.motion-paused .reveal-line > span { opacity:1; t
 .section-nav a:not([aria-current]):hover > span,.section-nav a:not([aria-current]):focus-visible > span { opacity:1; }
 
 .section-nav a { grid-template-columns:minmax(0,1fr); justify-content:stretch; }
+
+/* Stronger date column, about one third of the main row. */
+.experience-row { grid-template-columns:32px minmax(210px,1fr) minmax(0,2fr); }
+.experience-period { font-size:20px; line-height:1.55; }
+.experience-period .muted { font-size:16px; }
+.experience-period p + p { margin-top:12px; }
+.platform-heading { display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; }
+.platform-heading h4 { flex:none; }
+.platform-heading .platform-description { margin:0; font-size:13px; }
+/* Compact reference-sized navigation marks. */
+.section-nav { gap:0; }
+.section-nav a { min-height:18px; height:18px; padding:0; }
+.section-nav i { width:6px; height:1.5px; }
+.section-nav a[aria-current] i { width:10px; height:2px; }
+@media (max-width:1000px) and (min-width:701px) {
+  .experience-row { grid-template-columns:20px minmax(170px,1fr) minmax(0,2fr); }
+  .experience-period { font-size:18px; }
+  .platform-heading { gap:8px; }
+  .platform-heading h4 { font-size:20px; }
+  .platform-heading .platform-description { font-size:12px; }
+}
+@media (max-width:700px) {
+  .experience-row { grid-template-columns:18px minmax(0,1fr); }
+  .experience-period { font-size:17px; }
+  .experience-period .muted { font-size:14px; }
+  .experience-period p + p { margin-top:6px; }
+  .platform-heading { gap:4px 10px; }
+  .platform-heading .platform-description { font-size:12px; }
+}

@@ -109,13 +109,15 @@ and wraps naturally on mobile. The contact-method
 grid matches the width of “Let’s build something”; version metadata is centered
 on the page. The old modal menu and circular menu button have been removed.
 
-Every intro greeting uses the same 240ms duration. Section rail marks sit
-to the left of aligned labels; individual links fade over 60px as they cross
+Every intro greeting uses the same 240ms duration. Section rail marks reveal regular-weight labels on hover; individual links fade over 60px as they cross
 white-section boundaries and remain hidden over Home/Contact. Chromium and
-ControlMaestro share two columns within the right-side work-content column
-on desktop, while mobile stacks them.
+ControlMaestro stack compactly inside the right-side work-content column.
 
 Reloading resets the page to Home and clears the old section hash; direct
 section URLs still work on a fresh navigation. Browser scroll restoration
 is managed explicitly. Work platform descriptions now stack with 20px between
-them. Alternative date/content column layouts are pending user selection.
+them. The selected date/content layout uses roughly a 1:2 ratio with 20px
+dates and 16px locations on desktop. Platform names and muted descriptions
+share a baseline when space permits. Chromium has two concise bullets,
+including the selected backend-infrastructure summary. Navigation rows are
+18px apart, with 6px inactive marks and 10px centered active marks.
