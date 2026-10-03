@@ -21,10 +21,11 @@
     <header class="hero" id="home" aria-labelledby="hero-title">
       <div class="hero-surface" aria-hidden="true"></div>
       <nav class="top-nav" aria-label="Main navigation">
+        <a class="brand" href="#home" aria-label="Yifan Wang — back to home"><span class="brand-credit" aria-hidden="true">©</span><span class="brand-window" aria-hidden="true"><span class="brand-code">Code by </span><span class="brand-name">Yifan<span class="brand-surname"> Wang</span></span></span></a>
         <div class="top-nav-links"><a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#contact">Contact</a></div>
       </nav>
       <div class="location-label"><span>Based in<br>Wisconsin, USA</span><span class="globe" aria-hidden="true"><span class="globe-grid"><span class="globe-wrap"><span class="meridian"></span><span class="meridian"></span><span class="meridian"></span><span class="latitude"></span><span class="equator"></span></span></span></span></div>
-      <div class="hero-role"><svg class="arrow-diagonal" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M8 8l32 32M12 40h28V12"/></svg><p>Software Engineer<span class="hero-focus">Backend-focused · Distributed systems</span></p></div>
+      <div class="hero-role"><svg class="arrow-diagonal" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M8 8l32 32M12 40h28V12"/></svg><p><span class="hero-profession">Software Engineer</span><span class="hero-focus"><span class="hero-focus-text">Backend-focused · Distributed systems</span></span></p></div>
       <h1 class="sr-only" id="hero-title">Yifan Wang — Software Engineer</h1>
       <div class="name-marquee" aria-hidden="true"><div class="name-track" id="name-track"><span class="name-unit">Yifan Wang —&nbsp;</span><span class="name-unit">Yifan Wang —&nbsp;</span><span class="name-unit">Yifan Wang —&nbsp;</span></div></div>
       <div class="hero-bottom"><a class="scroll-link" href="#about"><span aria-hidden="true">↓</span> Scroll to explore</a><button class="motion-toggle" id="motion-toggle" type="button" aria-pressed="false" hidden><span class="pause-symbol" aria-hidden="true">Ⅱ</span><span id="motion-label">Pause motion</span></button></div>
@@ -38,8 +39,8 @@
         </div>
       </section>
       <section class="experience section-shell" id="experience" aria-labelledby="experience-title">
-        <div class="section-heading reveal"><h2 class="eyebrow" id="experience-title">Experience &amp; education</h2><span class="section-count">The journey so far</span></div>
-        <article class="experience-row work-row reveal"><span class="row-index" aria-hidden="true">01</span><div class="experience-period"><p>May 2023 — Present</p><p class="muted">Delafield, Wisconsin</p></div><div class="experience-content"><div class="job-heading"><h3>Elutions</h3><p class="experience-role">Software Developer</p></div><div class="experience-platforms"><div class="experience-project"><h4>Chromium</h4><p class="platform-description">Industrial Monitoring &amp; Control Platform</p><ul class="experience-points"><li>Led 0→1 architecture design and development through beta release.</li><li>Built core modules including licensing, legacy migration, API gateway, and real-time communication, along with CI/CD workflows.</li><li>Developed a shared data access layer using C#/.NET and EF Core, supporting PostgreSQL and SQL Server through a unified data model and enforcing tenant isolation through JWT-derived tenant context.</li></ul></div><div class="experience-project"><h4>ControlMaestro</h4><p class="platform-description">SCADA Platform</p><ul class="experience-points"><li>Owned feature development and production support, delivering 100+ features and resolving 300+ issues across the C++ core engine and C#/.NET/React web application.</li></ul></div></div></div></article>
+        <div class="section-heading reveal"><h2 class="eyebrow" id="experience-title">Experience &amp; education</h2></div>
+        <article class="experience-row reveal"><span class="row-index" aria-hidden="true">01</span><div class="experience-period"><p>May 2023 — Present</p><p class="muted">Delafield, Wisconsin</p></div><div class="experience-content"><div class="job-heading"><h3>Elutions</h3><p class="experience-role">Software Developer</p></div><div class="experience-platforms"><div class="experience-project"><h4>Chromium</h4><p class="platform-description">Industrial Monitoring &amp; Control Platform</p><ul class="experience-points"><li>Led 0→1 architecture design and development through beta release.</li><li>Built core modules including licensing, legacy migration, API gateway, and real-time communication, along with CI/CD workflows.</li><li>Developed a shared data access layer using C#/.NET and EF Core, supporting PostgreSQL and SQL Server through a unified data model and enforcing tenant isolation through JWT-derived tenant context.</li></ul></div><div class="experience-project"><h4>ControlMaestro</h4><p class="platform-description">SCADA Platform</p><ul class="experience-points"><li>Owned feature development and production support, delivering 100+ features and resolving 300+ issues across the C++ core engine and C#/.NET/React web application.</li></ul></div></div></div></article>
         <article class="experience-row reveal"><span class="row-index" aria-hidden="true">02</span><div class="experience-period"><p>Sep 2021 — Feb 2023</p><p class="muted">New York, NY</p></div><div class="experience-content"><h3>Columbia University</h3><p class="experience-role">M.S. in Electrical Engineering</p><p class="coursework" tabindex="0" aria-label="Coursework; scroll horizontally to read all courses">Analysis of Algorithms · Introduction to Databases · Computer Systems · Cloud Computing</p></div></article>
         <article class="experience-row reveal"><span class="row-index" aria-hidden="true">03</span><div class="experience-period"><p>Sep 2017 — Jun 2021</p><p class="muted">Chengdu, China</p></div><div class="experience-content"><h3>Sichuan University</h3><p class="experience-role">B.S. in Electrical Engineering</p></div></article>
       </section>
@@ -59,7 +60,7 @@
             <div class="project-detail"><p>Improved real-time localization using an image-pyramid method, achieving approximately 5% better trajectory accuracy.</p><div class="project-meta"><p class="eyebrow">Built with</p><p>C++ · Computer Vision · SLAM</p><a class="text-link" href="https://github.com/YifanWang3744/My-Improved-ORB-SLAM2" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></div></div>
           </details>
         </div>
-        <p class="project-hint reveal">Select a project to explore the details. <span aria-hidden="true">↗</span></p>
+        <div class="more-work reveal"><a class="more-work-button" href="https://github.com/YifanWang3744" target="_blank" rel="noopener noreferrer">More work on GitHub<span class="sr-only"> (opens in a new tab)</span></a></div>
       </section>
       <section class="skills section-shell" id="skills" aria-labelledby="skills-title">
         <div class="skills-intro reveal"><p class="eyebrow">Tools of the trade</p><h2 id="skills-title">from backend development<br>to infrastructure.</h2></div>
@@ -72,11 +73,11 @@
       </section>
     </main>
     <footer class="contact" id="contact" aria-labelledby="contact-title">
-      <div class="contact-curve" aria-hidden="true"></div>
+      <div class="contact-curve" aria-hidden="true"><div class="contact-curve-shape"></div></div>
       <div class="contact-content section-shell">
-        <div class="contact-heading reveal"><h2 id="contact-title">Let’s build something<br>together.</h2><svg class="arrow-diagonal" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M8 8l32 32M12 40h28V12"/></svg></div>
-        <div class="contact-action reveal"><span class="contact-line" aria-hidden="true"></span><a class="circle-button circle-blue magnetic" href="mailto:frankwang3744@gmail.com"><span>Get in touch</span></a></div>
-        <div class="contact-links reveal"><a class="outline-button" href="mailto:frankwang3744@gmail.com">frankwang3744@gmail.com</a><a class="outline-button" href="tel:+12125186933">(212) 518-6933</a></div>
+        <div class="contact-heading"><h2 id="contact-title">Let’s build something<br>together.</h2></div>
+        <div class="contact-action"><span class="contact-line" aria-hidden="true"></span><a class="circle-button circle-blue magnetic" href="mailto:frankwang3744@gmail.com"><span>Get in touch</span></a></div>
+        <div class="contact-links"><a class="contact-method" href="mailto:frankwang3744@gmail.com"><span class="contact-method-label">Email <span aria-hidden="true">↗</span></span><span class="contact-method-value">frankwang3744@gmail.com</span></a><a class="contact-method" href="tel:+12125186933"><span class="contact-method-label">Phone <span aria-hidden="true">↗</span></span><span class="contact-method-value">(212) 518-6933</span></a></div>
         <div class="footer-bottom"><div class="footer-meta"><p class="eyebrow">Version</p><p>2026 © Edition</p></div><div class="footer-socials"><p class="eyebrow">Elsewhere</p><div><a href="https://github.com/YifanWang3744" target="_blank" rel="noopener noreferrer">GitHub <span class="sr-only"> (opens in a new tab)</span></a><a href="https://linkedin.com/in/yifanwang5" target="_blank" rel="noopener noreferrer">LinkedIn <span class="sr-only"> (opens in a new tab)</span></a><a href="#home">Back to top <span aria-hidden="true">↑</span></a></div></div></div>
       </div>
     </footer>

@@ -94,3 +94,10 @@ from an independent operating-system preference test.
 See `outputs/portfolio-redesign-validation.md` for evidence, limitations,
 and release status. Validation screenshots and the packaging output remain
 local and are ignored by Git.
+
+The restored brand slides from “Code by Yifan” to “Yifan Wang” on hover or
+keyboard focus. The Hero subtitle fits the title width at each viewport size.
+Experience dates share one column and a larger font. More work on GitHub
+opens the profile. The footer uses a shrinking elliptical boundary and
+bottom-anchored desktop parallax; reduced-motion preferences and Pause motion
+show the contact content without movement. Contact links use labeled rows.

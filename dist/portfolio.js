@@ -42,7 +42,7 @@
     if (skippedByUser) {
       const introFocus = window.matchMedia('(max-width: 700px)').matches
         ? document.getElementById('menu-toggle')
-        : document.querySelector('.top-nav-links a');
+        : document.querySelector('.brand');
       introFocus.focus({ preventScroll: true });
     }
     window.dispatchEvent(new Event('portfolio:intro-finished'));
@@ -190,6 +190,8 @@
     const label = document.getElementById('motion-label');
     const curve = document.querySelector('.contact-curve');
     const contact = document.getElementById('contact');
+    const contactContent = contact.querySelector('.contact-content');
+    const contactButton = contact.querySelector('.contact-action .circle-button');
     const surface = document.querySelector('.hero-surface');
     const role = document.querySelector('.hero-role');
     let width = unit.getBoundingClientRect().width;
@@ -213,8 +215,12 @@
       }
       boost *= .94;
       const distance = contact.getBoundingClientRect().top;
-      const progress = Math.max(0, Math.min(1, (window.innerHeight - distance) / window.innerHeight));
-      curve.style.transform = `scaleY(${1 - progress * .85})`;
+      const footerProgress = Math.max(0, Math.min(1, (window.innerHeight - distance) / contact.offsetHeight));
+      curve.style.height = `${window.innerHeight * (window.innerWidth <= 700 ? .075 : .1) * (1 - footerProgress)}px`;
+      const remaining = Math.max(0, document.documentElement.scrollHeight - window.innerHeight - window.scrollY);
+      const desktop = window.innerWidth > 700;
+      contactContent.style.transform = desktop ? `translate3d(0,${-Math.min(remaining, contact.offsetHeight) * .4}px,0)` : '';
+      contactButton.style.translate = desktop ? `${-Math.min(remaining, contact.offsetHeight) * .1}px 0` : '';
       frame = requestAnimationFrame(tick);
     }
     function sync() {
@@ -226,7 +232,9 @@
       if (!active()) {
         surface.style.transform = '';
         role.style.translate = '';
-        curve.style.transform = '';
+        curve.style.height = '0px';
+        contactContent.style.transform = '';
+        contactButton.style.translate = '';
         if (reduced.matches) track.style.transform = '';
         return;
       }
@@ -266,8 +274,20 @@
       control.addEventListener('click', () => { magnetic.style.transform = ''; });
     }
   }
+  function fitHeroSubtitle() {
+    const title = document.querySelector('.hero-profession');
+    const subtitle = document.querySelector('.hero-focus-text');
+    const fit = () => {
+      subtitle.style.fontSize = '16px';
+      const textWidth = subtitle.getBoundingClientRect().width;
+      if (textWidth) subtitle.style.fontSize = `${16 * title.getBoundingClientRect().width / textWidth}px`;
+    };
+    fit();
+    window.addEventListener('resize', fit, { passive: true });
+    document.fonts?.ready.then(fit);
+  }
   // Independent enhancements must not make essential content depend on each other.
-  [initializeMenu, initializeReveals, initializeMotion].forEach(initialize => {
+  [initializeMenu, initializeReveals, initializeMotion, fitHeroSubtitle].forEach(initialize => {
     try { initialize(); } catch (error) { console.warn('Portfolio enhancement unavailable:', error); }
   });
 })();
