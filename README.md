@@ -32,7 +32,7 @@ The intro plays on a full page load, can be skipped with Escape or its button,
 and has an independent four-second cleanup timer. The menu supports Escape,
 backdrop dismissal, keyboard focus containment, and return focus. Initial
 hash links remain at their destination after the intro. Use **Pause motion**
-to stop the moving name and scroll effects; reduced-motion preferences show
+to stop the rotating globe, moving name, and scroll effects; reduced-motion preferences show
 a short “Hello · 你好” greeting and static content.
 
 The old compiled Tailwind files and scripts are preserved for reference but
@@ -41,10 +41,11 @@ have not been overwritten or added to the new site.
 
 ## Photography and public assets
 
-The 35 photography files listed in `outputs/portfolio-redesign-plan.md` stay
-on disk, are removed from the Git index, and have exact `.gitignore` rules.
-Project screenshots and the favicon remain tracked. Photography is not used
-by any page, including the Hero and the old photography URL.
+The sea-side `dist/assets/Avatar.png` is the approved Hero background. The
+other 34 photography files remain local with exact `.gitignore` rules.
+Project screenshots and the favicon remain tracked. The old photography URL
+redirects to the home page. The name scrolls in one direction at twice its
+previous base speed; the globe rotates automatically and respects Pause motion.
 
 For an explicit public-only package:
 
@@ -52,8 +53,9 @@ For an explicit public-only package:
 python3 scripts/package_site.py
 ```
 
-This writes `outputs/site/` using an allowlist of 11 public files, plus
-`.nojekyll`. It never copies photography, the local resume, internal notes,
+This writes `outputs/site/` using an allowlist of 12 public files, plus
+`.nojekyll`. It includes only the approved Avatar photo and never copies the other photos,
+the local resume, internal notes,
 or unused styles. The script only replaces its own generated output folder.
 Do not upload the raw working directory: `.gitignore` controls Git tracking,
 not arbitrary upload tools.

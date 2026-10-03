@@ -191,7 +191,6 @@
     const role = document.querySelector('.hero-role');
     let width = unit.getBoundingClientRect().width;
     let offset = width * .01;
-    let direction = 1;
     let boost = 0;
     let lastY = window.scrollY;
     let lastTime;
@@ -203,7 +202,7 @@
       const delta = Math.min((time - (lastTime || time)) / 1000, .05);
       lastTime = time;
       if (window.scrollY < hero.offsetHeight + 100) {
-        offset += direction * (width * .028 + boost) * delta;
+        offset += (width * .056 + boost) * delta;
         offset = ((offset % width) + width) % width;
         track.style.transform = `translate3d(${-offset}px,0,0)`;
         surface.style.transform = `translate3d(0,${window.scrollY * .1}px,0)`;
@@ -217,6 +216,7 @@
     }
     function sync() {
       control.hidden = reduced.matches;
+      root.classList.toggle('motion-running', active());
       if (frame) cancelAnimationFrame(frame);
       frame = undefined;
       lastTime = undefined;
@@ -239,7 +239,7 @@
     });
     window.addEventListener('scroll', () => {
       const diff = window.scrollY - lastY;
-      if (Math.abs(diff) > 1) { direction = diff > 0 ? 1 : -1; boost = Math.min(Math.abs(diff) * 5, 550); }
+      if (Math.abs(diff) > 1) { boost = Math.min(Math.abs(diff) * 5, 550); }
       lastY = window.scrollY;
     }, { passive: true });
     window.addEventListener('resize', () => {

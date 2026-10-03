@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Copy an explicit public-file allowlist; local photography is never packaged."""
+"""Copy an explicit public-file allowlist; only approved public assets are packaged."""
 from pathlib import Path
 import shutil
 
@@ -14,6 +14,7 @@ PUBLIC_FILES = (
     "dist/skills.html",
     "dist/photography.html",
     "dist/assets/favicon.ico",
+    "dist/assets/Avatar.png",
     "dist/assets/bookstore.jpg",
     "dist/assets/hr-system.jpg",
     "dist/assets/orb-slam-2.jpg",
