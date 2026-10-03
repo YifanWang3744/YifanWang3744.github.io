@@ -17,6 +17,7 @@ PUBLIC_FILES = (
     "dist/photography.html",
     "dist/assets/favicon.ico",
     "dist/assets/Avatar.png",
+    "dist/assets/controlmaestro-titanium.png",
     "dist/assets/bookstore.jpg",
     "dist/assets/hr-system.jpg",
     "dist/assets/orb-slam-2.jpg",

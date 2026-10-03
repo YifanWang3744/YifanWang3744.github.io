@@ -527,3 +527,9 @@ html.page-transitioning { overflow:hidden; }
 
 /* Page-arrival focus moves screen readers without drawing a mouse-focus box. */
 h1[tabindex="-1"]:focus { outline:none; }
+
+/* Product illustration: a fixed landscape window with an oversized moving layer. */
+.build-photo { position:relative; aspect-ratio:4 / 3; background:#0c0d0d; isolation:isolate; }
+.build-photo img { position:absolute; left:-12px; top:-20%; width:calc(100% + 24px); height:140%; object-fit:contain; object-position:center; will-change:transform; }
+@media (prefers-reduced-motion:reduce) { .build-photo img { transform:none !important; will-change:auto; } }
+@media print { .build-photo img { transform:none !important; } }

@@ -177,6 +177,9 @@
     const contactButton = contact.querySelector('.contact-action .circle-button');
     const surface = document.querySelector('.hero-surface');
     const role = document.querySelector('.hero-role');
+    const buildPhoto = document.querySelector('.build-photo');
+    const buildImage = buildPhoto?.querySelector('img');
+    let photoShift = 0;
     let width = unit?.getBoundingClientRect().width || 1;
     let offset = width * .01;
     let boost = 0;
@@ -197,6 +200,15 @@
         role.style.translate = `0 ${-Math.min(window.scrollY * .08, 65)}px`;
       }
       boost *= .94;
+      if (buildImage) {
+        const box = buildPhoto.getBoundingClientRect();
+        const progress = Math.max(0, Math.min(1, (window.innerHeight - box.top) / (window.innerHeight + box.height)));
+        const extent = box.height * .2;
+        const target = (progress - .5) * extent * 2;
+        photoShift += (target - photoShift) * (1 - Math.exp(-delta * 12));
+        photoShift = Math.max(-extent, Math.min(extent, photoShift));
+        buildImage.style.transform = `translate3d(0,${photoShift}px,0)`;
+      }
       const overview = document.querySelector('.build-overview');
       if (overview) {
         const tint = Math.min(1, window.scrollY / 900);
@@ -219,6 +231,7 @@
       if (!active()) {
         if (surface) surface.style.transform = '';
         if (role) role.style.translate = '';
+        if (buildImage) { buildImage.style.transform = ''; photoShift = 0; }
         curve.style.height = '0px';
         contactContent.style.transform = '';
         contactButton.style.translate = '';

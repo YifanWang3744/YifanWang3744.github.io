@@ -131,3 +131,10 @@ them. The selected date/content layout uses roughly a 1:2 ratio with 20px
 dates and 16px locations on desktop. Muted platform descriptions sit on the line below their names. Chromium has two concise bullets,
 including the selected backend-infrastructure summary. Navigation rows are
 18px apart, with 6px inactive marks and 10px centered active marks.
+
+The What I build introduction uses the user-supplied ControlMaestro Titanium
+product illustration from the linked product page. Its landscape window clips
+an oversized image layer that moves more slowly than scrolling, following the
+Dennis About image treatment. The complete graphic is fitted horizontally;
+reduced-motion preferences and print rendering keep it static. About me retains
+the sea-side Avatar background.
