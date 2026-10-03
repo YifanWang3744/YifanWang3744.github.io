@@ -31,10 +31,10 @@ Projects use native `details`/`summary`, so they work without JavaScript.
 The intro plays on a full page load, can be skipped with Escape or its button,
 and has an independent four-second cleanup timer. Its second greeting is 你好.
 The right-side rail uses centered short marks, with a longer bold current mark.
-Hovering or focusing an inactive mark replaces it with the section name. Links
+Hovering or focusing any mark replaces it with the section name; the current
+section name is bold. Links
 jump directly and transfer keyboard focus to the destination. Initial
-hash links remain at their destination after the intro. Use **Pause motion**
-to stop the rotating globe, moving name, and scroll effects; reduced-motion preferences show
+hash links remain at their destination after the intro. Reduced-motion preferences show
 a short “Hello · 你好” greeting and static content.
 
 The old compiled Tailwind files and scripts are preserved for reference but
@@ -47,7 +47,8 @@ The sea-side `dist/assets/Avatar.png` is the approved Hero background. The
 other 34 photography files remain local with exact `.gitignore` rules.
 Project screenshots and the favicon remain tracked. The old photography URL
 redirects to the home page. The name scrolls in one direction at twice its
-previous base speed; the globe animates its longitude bands with a gentle axis tilt and respects Pause motion.
+previous base speed. The Hero location badge, globe, profession arrow, and
+Pause motion control have been removed; profession text occupies the former arrow position.
 Navigation and page sections place About and Experience before Projects.
 The Hero subtitle is “Backend-focused · Distributed systems”.
 
@@ -101,7 +102,7 @@ The restored brand slides from “Code by Yifan” to “Yifan Wang” on hover 
 keyboard focus. The Hero subtitle fits the title width at each viewport size.
 Experience dates share one column and a larger font. More work on GitHub
 opens the profile. The footer uses a shrinking elliptical boundary and
-bottom-anchored desktop parallax; reduced-motion preferences and Pause motion
+bottom-anchored desktop parallax; reduced-motion preferences
 show the contact content without movement. Contact links use labeled rows.
 
 The About summary uses two balanced desktop lines with natural word spacing,

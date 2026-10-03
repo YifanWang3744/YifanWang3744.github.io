@@ -395,8 +395,8 @@ html.motion-paused .reveal,html.motion-paused .reveal-line > span { opacity:1; t
 .section-nav i { width:8px; height:2px; flex:none; opacity:.5; transition:width .25s,opacity .2s,transform .2s; }
 .section-nav a[aria-current] i { width:24px; height:3px; opacity:1; }
 .section-nav a > span { position:absolute; inset:0; display:grid; place-items:center; opacity:0; font-weight:400; transition:opacity .2s; }
-.section-nav a:not([aria-current]):hover i,.section-nav a:not([aria-current]):focus-visible i { opacity:0; transform:scaleX(0); }
-.section-nav a:not([aria-current]):hover > span,.section-nav a:not([aria-current]):focus-visible > span { opacity:1; }
+.section-nav a:hover i,.section-nav a:focus-visible i { opacity:0; transform:scaleX(0); }
+.section-nav a:hover > span,.section-nav a:focus-visible > span { opacity:1; }
 
 .section-nav a { grid-template-columns:minmax(0,1fr); justify-content:stretch; }
 
@@ -428,3 +428,8 @@ html.motion-paused .reveal,html.motion-paused .reveal-line > span { opacity:1; t
   .platform-heading { gap:4px 10px; }
   .platform-heading .platform-description { font-size:12px; }
 }
+
+/* Current section reveals the same label, with a stronger weight. */
+.section-nav a[aria-current] > span { font-weight:600; }
+/* Keep the mobile role at the former arrow's position after removing it. */
+@media (max-width:700px) { .hero-role { bottom:calc(16% + 60px); } }

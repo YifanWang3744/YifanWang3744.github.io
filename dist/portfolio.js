@@ -17,7 +17,6 @@
   let introLeaving = false;
   let skippedByUser = false;
   let timers = [];
-  let paused = false;
 
   function setLock(reason, active) {
     active ? locks.add(reason) : locks.delete(reason);
@@ -159,7 +158,6 @@
       targets.forEach(target => { target.classList.remove('is-pending'); target.classList.add('is-visible'); });
     };
     reduced.addEventListener('change', event => { if (event.matches) showAll(); });
-    document.getElementById('motion-toggle').addEventListener('click', showAll, { once: true });
     // A focused off-screen element should never stay visually hidden.
     document.addEventListener('focusin', event => {
       const target = event.target.closest('.reveal');
@@ -170,8 +168,6 @@
   function initializeMotion() {
     const track = document.getElementById('name-track');
     const unit = track.querySelector('.name-unit');
-    const control = document.getElementById('motion-toggle');
-    const label = document.getElementById('motion-label');
     const curve = document.querySelector('.contact-curve');
     const contact = document.getElementById('contact');
     const contactContent = contact.querySelector('.contact-content');
@@ -184,7 +180,7 @@
     let lastY = window.scrollY;
     let lastTime;
     let frame;
-    function active() { return !reduced.matches && !paused && !document.hidden && introFinished; }
+    function active() { return !reduced.matches && !document.hidden && introFinished; }
     function tick(time) {
       frame = undefined;
       if (!active()) return;
@@ -208,7 +204,6 @@
       frame = requestAnimationFrame(tick);
     }
     function sync() {
-      control.hidden = reduced.matches;
       root.classList.toggle('motion-running', active());
       if (frame) cancelAnimationFrame(frame);
       frame = undefined;
@@ -224,14 +219,6 @@
       }
       frame = requestAnimationFrame(tick);
     }
-    control.addEventListener('click', () => {
-      paused = !paused;
-      root.classList.toggle('motion-paused', paused);
-      control.setAttribute('aria-pressed', String(paused));
-      label.textContent = paused ? 'Resume motion' : 'Pause motion';
-      control.querySelector('.pause-symbol').textContent = paused ? '▷' : 'Ⅱ';
-      sync();
-    });
     window.addEventListener('scroll', () => {
       const diff = window.scrollY - lastY;
       if (Math.abs(diff) > 1) { boost = Math.min(Math.abs(diff) * 5, 550); }
@@ -255,7 +242,6 @@
       });
       magnetic.addEventListener('pointerleave', () => { magnetic.style.transform = ''; });
       reduced.addEventListener('change', () => { magnetic.style.transform = ''; });
-      control.addEventListener('click', () => { magnetic.style.transform = ''; });
     }
   }
   function fitHeroSubtitle() {
