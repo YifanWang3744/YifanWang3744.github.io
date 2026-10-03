@@ -1,6 +1,6 @@
 # Yifan Wang — Portfolio
 
-A static, single-page portfolio inspired by Dennis Snellenberg’s typography,
+A static, two-page portfolio inspired by Dennis Snellenberg’s typography,
 spacing, and motion, with Yifan’s own professional content. No build step,
 package installation, external fonts, or runtime libraries are required.
 
@@ -17,7 +17,11 @@ opening the HTML directly from disk.
 
 ## Files and behavior
 
-- `index.html`: Hero, About, Experience & Education, Projects, Skills, Contact.
+- `index.html`: About me page, retaining Hero, About, Experience & Education, Projects, Skills, Contact.
+- `what-i-build/index.html`: What I build page, with an editorial introduction,
+  three capability columns, a project feature, and Contact.
+- `dist/page-transitions.js`: Same-origin native page navigation with a curved
+  black curtain, destination title, and incoming page motion.
 - `dist/portfolio.css`: Layout, responsive styles, curves, transitions, and
   `prefers-reduced-motion` behavior; fonts use the system sans-serif stack.
 - `dist/portfolio.js`: Multilingual intro (including 你好), moving name,
@@ -28,8 +32,12 @@ opening the HTML directly from disk.
   source files from the existing GitHub Pages Jekyll build.
 
 Projects use native `details`/`summary`, so they work without JavaScript.
-The intro plays on a full page load, can be skipped with Escape,
+The multilingual intro plays on a fresh About me load, can be skipped with Escape,
 and has an independent four-second cleanup timer. Its second greeting is 你好.
+What I build uses a short page-title intro. Transitions between the two pages
+skip the greetings, and native links remain functional without JavaScript.
+Reduced motion bypasses the transition, and browser Back/Forward restores
+the page without leaving an overlay or inert content.
 The right-side rail uses centered short marks, with a longer bold current mark.
 Hovering or focusing any mark replaces it with the section name; the current
 section name uses the same regular weight. Links
@@ -50,7 +58,8 @@ redirects to the home page. The name scrolls in one direction at twice its
 previous base speed. Its reduced type scale uses 11vw on desktop and 24vw (80–104px) on mobile,
 with normal letter spacing. The bottom-left Scroll to explore link is removed. The Hero location badge and rotating globe are restored. The profession arrow is restored above the role text; the Pause motion control
 remains removed.
-Navigation and page sections place About and Experience before Projects.
+The top navigation contains About me and What I build. Within About me,
+page sections place About and Experience before Projects.
 The Hero subtitle is “Backend-focused · Distributed systems”.
 
 For an explicit public-only package:

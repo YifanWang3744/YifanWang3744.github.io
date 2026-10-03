@@ -7,6 +7,8 @@ ROOT = Path(__file__).resolve().parents[1]
 DESTINATION = ROOT / "outputs" / "site"
 PUBLIC_FILES = (
     "index.html",
+    "what-i-build/index.html",
+    "dist/page-transitions.js",
     "dist/portfolio.css",
     "dist/portfolio.js",
     "dist/projects.html",

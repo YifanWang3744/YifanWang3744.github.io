@@ -39,7 +39,7 @@
     timers.forEach(clearTimeout);
     timers = [];
     intro.hidden = true;
-    page.inert = false;
+    page.inert = root.classList.contains('page-transitioning');
     setLock('intro', false);
     restoreAnchor();
     if (skippedByUser) {
@@ -72,7 +72,12 @@
     intro.hidden = false;
     page.inert = true;
     setLock('intro', true);
-    if (reduced.matches) {
+    if (root.dataset.pageArrival === 'true') {
+      finishIntro();
+    } else if (document.body.dataset.page === 'build' && !reduced.matches) {
+      greeting.textContent = 'What I build';
+      timers.push(setTimeout(() => leaveIntro(), 650));
+    } else if (reduced.matches) {
       greeting.textContent = 'Hello · 你好';
       timers.push(setTimeout(finishIntro, 350));
     } else {
@@ -89,6 +94,7 @@
 
   function initializeSectionNavigation() {
     const nav = document.querySelector('.section-nav');
+    if (!nav) return;
     const links = [...nav.querySelectorAll('a')];
     const sections = links.map(link => document.querySelector(link.getAttribute('href')));
     let frame;
@@ -164,14 +170,14 @@
 
   function initializeMotion() {
     const track = document.getElementById('name-track');
-    const unit = track.querySelector('.name-unit');
+    const unit = track?.querySelector('.name-unit');
     const curve = document.querySelector('.contact-curve');
     const contact = document.getElementById('contact');
     const contactContent = contact.querySelector('.contact-content');
     const contactButton = contact.querySelector('.contact-action .circle-button');
     const surface = document.querySelector('.hero-surface');
     const role = document.querySelector('.hero-role');
-    let width = unit.getBoundingClientRect().width;
+    let width = unit?.getBoundingClientRect().width || 1;
     let offset = width * .01;
     let boost = 0;
     let lastY = window.scrollY;
@@ -183,7 +189,7 @@
       if (!active()) return;
       const delta = Math.min((time - (lastTime || time)) / 1000, .05);
       lastTime = time;
-      if (window.scrollY < hero.offsetHeight + 100) {
+      if (track && window.scrollY < hero.offsetHeight + 100) {
         offset += (width * .056 + boost) * delta;
         offset = ((offset % width) + width) % width;
         track.style.transform = `translate3d(${-offset}px,0,0)`;
@@ -191,6 +197,11 @@
         role.style.translate = `0 ${-Math.min(window.scrollY * .08, 65)}px`;
       }
       boost *= .94;
+      const overview = document.querySelector('.build-overview');
+      if (overview) {
+        const tint = Math.min(1, window.scrollY / 900);
+        overview.style.backgroundColor = `rgb(${255-22*tint},${255-21*tint},${255-20*tint})`;
+      }
       const distance = contact.getBoundingClientRect().top;
       const footerProgress = Math.max(0, Math.min(1, (window.innerHeight - distance) / contact.offsetHeight));
       curve.style.height = `${window.innerHeight * (window.innerWidth <= 700 ? .075 : .1) * (1 - footerProgress)}px`;
@@ -206,12 +217,12 @@
       frame = undefined;
       lastTime = undefined;
       if (!active()) {
-        surface.style.transform = '';
-        role.style.translate = '';
+        if (surface) surface.style.transform = '';
+        if (role) role.style.translate = '';
         curve.style.height = '0px';
         contactContent.style.transform = '';
         contactButton.style.translate = '';
-        if (reduced.matches) track.style.transform = '';
+        if (reduced.matches && track) track.style.transform = '';
         return;
       }
       frame = requestAnimationFrame(tick);
@@ -222,6 +233,7 @@
       lastY = window.scrollY;
     }, { passive: true });
     window.addEventListener('resize', () => {
+      if (!unit) return;
       const nextWidth = unit.getBoundingClientRect().width;
       offset = nextWidth * (offset / width);
       width = nextWidth;
@@ -244,6 +256,7 @@
   function fitHeroSubtitle() {
     const title = document.querySelector('.hero-profession');
     const subtitle = document.querySelector('.hero-focus-text');
+    if (!title || !subtitle) return;
     const fit = () => {
       subtitle.style.fontSize = '16px';
       const textWidth = subtitle.getBoundingClientRect().width;
@@ -255,13 +268,13 @@
   }
   function fitContentWidths() {
     const summary = document.querySelector('.about-summary');
-    const lines = [...summary.querySelectorAll('span')];
+    const lines = summary ? [...summary.querySelectorAll('span')] : [];
     const contactLine = document.getElementById('contact-first-line');
     const contactLinks = document.querySelector('.contact-links');
     function fit() {
-      summary.style.width = '100%';
+      if (summary) summary.style.width = '100%';
       lines.forEach(line => { line.style.fontSize = ''; });
-      if (window.innerWidth > 700) {
+      if (summary && window.innerWidth > 700) {
         const available = summary.clientWidth;
         const widths = lines.map(line => {
           line.style.width = 'max-content';
