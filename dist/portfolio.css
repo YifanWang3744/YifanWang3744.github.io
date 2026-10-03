@@ -528,8 +528,21 @@ html.page-transitioning { overflow:hidden; }
 /* Page-arrival focus moves screen readers without drawing a mouse-focus box. */
 h1[tabindex="-1"]:focus { outline:none; }
 
-/* Product illustration: a fixed landscape window with an oversized moving layer. */
-.build-photo { position:relative; aspect-ratio:4 / 3; background:#0c0d0d; isolation:isolate; }
-.build-photo img { position:absolute; left:-12px; top:-20%; width:calc(100% + 24px); height:140%; object-fit:contain; object-position:center; will-change:transform; }
-@media (prefers-reduced-motion:reduce) { .build-photo img { transform:none !important; will-change:auto; } }
-@media print { .build-photo img { transform:none !important; } }
+/* Original Titanium PNG layers: independent hover transforms inside the scroll mask. */
+.build-photo { position:relative; aspect-ratio:4 / 3; background:#0c0d0d; isolation:isolate; user-select:none; background-image:radial-gradient(circle,#303232 1.5px,transparent 2px); background-size:64px 64px; }
+.titanium-scene { position:absolute; inset:-20% 0; will-change:transform; }
+.titanium-stage { position:absolute; width:80%; aspect-ratio:552 / 520; left:10%; top:50%; transform:translateY(-50%); }
+.titanium-panel { position:absolute; aspect-ratio:2084 / 1250; background:#252525; border-radius:10px; overflow:hidden; box-shadow:0 10px 25px #0005; transform:translate(var(--panel-x,0%),var(--panel-y,0%)) rotateX(16deg) rotateY(-25deg) rotateZ(7deg); transition:transform .8s cubic-bezier(.22,1,.36,1); }
+.titanium-panel img { position:static; display:block; width:100%; height:100%; object-fit:fill; }
+.titanium-main { left:3.8%; top:20.3%; width:92.4%; z-index:1; translate:var(--pointer-x,0px) 7px; }
+.titanium-table-left { left:1%; top:6.46%; width:32.6%; --panel-y:20%; }
+.titanium-table-right { left:36%; top:4.16%; width:32.6%; --panel-y:12%; }
+.titanium-line-chart { left:-1%; top:59%; width:51.63%; z-index:2; --panel-x:6%; --panel-y:-8%; }
+.titanium-bar-chart { left:54%; top:59%; width:51.63%; z-index:2; --panel-x:-5%; --panel-y:-6%; }
+.titanium-interactive.is-hovered .titanium-panel { transform:translate(0,0) rotateX(0deg) rotateY(0deg) rotateZ(0deg); transition-duration:1.3s; }
+@media (prefers-reduced-motion:reduce) {
+  .titanium-scene { transform:none !important; will-change:auto; }
+  .titanium-panel { transform:none; transition:none; }
+  .titanium-main { translate:0 7px; }
+}
+@media print { .titanium-scene { transform:none !important; } }

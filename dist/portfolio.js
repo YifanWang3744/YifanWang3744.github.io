@@ -178,7 +178,24 @@
     const surface = document.querySelector('.hero-surface');
     const role = document.querySelector('.hero-role');
     const buildPhoto = document.querySelector('.build-photo');
-    const buildImage = buildPhoto?.querySelector('img');
+    const buildImage = buildPhoto?.querySelector('.titanium-scene');
+    const hoverPointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+    let pointerTarget = 0;
+    let pointerPosition = 0;
+    if (buildPhoto) {
+      buildPhoto.addEventListener('pointerenter', () => {
+        if (!reduced.matches && hoverPointer.matches) buildPhoto.classList.add('is-hovered');
+      });
+      buildPhoto.addEventListener('pointermove', event => {
+        if (reduced.matches || !hoverPointer.matches) return;
+        const box = buildPhoto.getBoundingClientRect();
+        pointerTarget = Math.max(-7, Math.min(7, ((event.clientX - box.left) / box.width - .5) * 17.5));
+      });
+      buildPhoto.addEventListener('pointerleave', () => {
+        buildPhoto.classList.remove('is-hovered');
+        pointerTarget = 0;
+      });
+    }
     let photoShift = 0;
     let width = unit?.getBoundingClientRect().width || 1;
     let offset = width * .01;
@@ -208,6 +225,8 @@
         photoShift += (target - photoShift) * (1 - Math.exp(-delta * 12));
         photoShift = Math.max(-extent, Math.min(extent, photoShift));
         buildImage.style.transform = `translate3d(0,${photoShift}px,0)`;
+        pointerPosition += (pointerTarget - pointerPosition) * (1 - Math.exp(-delta * 4));
+        buildPhoto.style.setProperty('--pointer-x', `${pointerPosition}px`);
       }
       const overview = document.querySelector('.build-overview');
       if (overview) {
@@ -231,7 +250,12 @@
       if (!active()) {
         if (surface) surface.style.transform = '';
         if (role) role.style.translate = '';
-        if (buildImage) { buildImage.style.transform = ''; photoShift = 0; }
+        if (buildImage) {
+          buildImage.style.transform = ''; photoShift = 0;
+          pointerPosition = pointerTarget = 0;
+          buildPhoto.style.removeProperty('--pointer-x');
+          buildPhoto.classList.remove('is-hovered');
+        }
         curve.style.height = '0px';
         contactContent.style.transform = '';
         contactButton.style.translate = '';

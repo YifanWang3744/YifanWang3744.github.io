@@ -132,9 +132,10 @@ dates and 16px locations on desktop. Muted platform descriptions sit on the line
 including the selected backend-infrastructure summary. Navigation rows are
 18px apart, with 6px inactive marks and 10px centered active marks.
 
-The What I build introduction uses the user-supplied ControlMaestro Titanium
-product illustration from the linked product page. Its landscape window clips
-an oversized image layer that moves more slowly than scrolling, following the
-Dennis About image treatment. The complete graphic is fitted horizontally;
-reduced-motion preferences and print rendering keep it static. About me retains
-the sea-side Avatar background.
+The What I build illustration uses five original transparent PNG layers downloaded
+from the ControlMaestro Titanium product page, rather than a screenshot. Panels
+flatten and expand on hover (1.3s), reset on exit (.8s), and the main panel follows
+horizontal pointer movement by up to 7px. The landscape mask clips the whole
+layered scene as it moves during scrolling, independently of hover transforms.
+Reduced-motion preferences keep the illustration static. About me retains the
+sea-side Avatar background.
