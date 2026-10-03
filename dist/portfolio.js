@@ -8,7 +8,11 @@
   const skip = document.getElementById('intro-skip');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const locks = new Set();
+  const isReload = performance.getEntriesByType('navigation')[0]?.type === 'reload';
+  history.scrollRestoration = 'manual';
+  if (isReload) history.replaceState(null, '', location.pathname + location.search);
   const initialHash = location.hash;
+  if (!initialHash) window.scrollTo({ top:0, behavior:'instant' });
   let introFinished = false;
   let introLeaving = false;
   let skippedByUser = false;
@@ -20,7 +24,8 @@
     root.classList.toggle('is-locked', locks.size > 0);
   }
   function restoreAnchor() {
-    if (!initialHash || location.hash !== initialHash) return;
+    if (!initialHash) { window.scrollTo({ top:0, behavior:'instant' }); return; }
+    if (location.hash !== initialHash) return;
     let id;
     try { id = decodeURIComponent(initialHash.slice(1)); } catch { return; }
     const target = document.getElementById(id);

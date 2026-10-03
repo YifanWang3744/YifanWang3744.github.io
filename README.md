@@ -30,8 +30,9 @@ opening the HTML directly from disk.
 Projects use native `details`/`summary`, so they work without JavaScript.
 The intro plays on a full page load, can be skipped with Escape or its button,
 and has an independent four-second cleanup timer. Its second greeting is 你好.
-The labeled right-side rail highlights the current section and directly jumps
-to each section, with keyboard focus transferred to the destination. Initial
+The right-side rail uses centered short marks, with a longer bold current mark.
+Hovering or focusing an inactive mark replaces it with the section name. Links
+jump directly and transfer keyboard focus to the destination. Initial
 hash links remain at their destination after the intro. Use **Pause motion**
 to stop the rotating globe, moving name, and scroll effects; reduced-motion preferences show
 a short “Hello · 你好” greeting and static content.
@@ -113,3 +114,8 @@ to the left of aligned labels; individual links fade over 60px as they cross
 white-section boundaries and remain hidden over Home/Contact. Chromium and
 ControlMaestro share two columns within the right-side work-content column
 on desktop, while mobile stacks them.
+
+Reloading resets the page to Home and clears the old section hash; direct
+section URLs still work on a fresh navigation. Browser scroll restoration
+is managed explicitly. Work platform descriptions now stack with 20px between
+them. Alternative date/content column layouts are pending user selection.

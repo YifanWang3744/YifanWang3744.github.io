@@ -384,3 +384,18 @@ html.motion-paused .reveal,html.motion-paused .reveal-line > span { opacity:1; t
 
 /* End the final greeting on time before the curtain lifts. */
 .intro.is-leaving .intro-greeting { visibility:hidden; }
+
+/* Compact, stacked work descriptions. */
+.experience-platforms { grid-template-columns:minmax(0,1fr); gap:20px; margin-top:24px; }
+.experience-platforms .experience-points { margin-top:12px; line-height:1.65; }
+.experience-platforms .experience-points li + li { margin-top:10px; }
+.platform-description { margin-top:3px; }
+/* All marks share a center; inactive marks become normal-weight names on hover. */
+.section-nav a { position:relative; display:grid; place-items:center; padding:6px 0; gap:0; font-weight:400; }
+.section-nav i { width:8px; height:2px; flex:none; opacity:.5; transition:width .25s,opacity .2s,transform .2s; }
+.section-nav a[aria-current] i { width:24px; height:3px; opacity:1; }
+.section-nav a > span { position:absolute; inset:0; display:grid; place-items:center; opacity:0; font-weight:400; transition:opacity .2s; }
+.section-nav a:not([aria-current]):hover i,.section-nav a:not([aria-current]):focus-visible i { opacity:0; transform:scaleX(0); }
+.section-nav a:not([aria-current]):hover > span,.section-nav a:not([aria-current]):focus-visible > span { opacity:1; }
+
+.section-nav a { grid-template-columns:minmax(0,1fr); justify-content:stretch; }
