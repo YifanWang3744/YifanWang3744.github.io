@@ -381,3 +381,6 @@ html.motion-paused .reveal,html.motion-paused .reveal-line > span { opacity:1; t
   .experience-platforms { grid-template-columns:1fr; }
   .section-nav i { flex-basis:10px; }
 }
+
+/* End the final greeting on time before the curtain lifts. */
+.intro.is-leaving .intro-greeting { visibility:hidden; }
