@@ -5,7 +5,6 @@
   const hero = document.getElementById('home');
   const intro = document.getElementById('intro');
   const greeting = document.getElementById('greeting');
-  const skip = document.getElementById('intro-skip');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const locks = new Set();
   const isReload = performance.getEntriesByType('navigation')[0]?.type === 'reload';
@@ -59,7 +58,6 @@
     timers.push(setTimeout(finishIntro, 820));
   }
   // Register all exit paths before making the page inert.
-  skip.addEventListener('click', () => { skippedByUser = true; leaveIntro(true); });
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape' && !introFinished) { event.preventDefault(); skippedByUser = true; leaveIntro(true); }
   });
@@ -74,7 +72,6 @@
     intro.hidden = false;
     page.inert = true;
     setLock('intro', true);
-    skip.focus({ preventScroll: true });
     if (reduced.matches) {
       greeting.textContent = 'Hello · 你好';
       timers.push(setTimeout(finishIntro, 350));

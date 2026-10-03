@@ -28,11 +28,11 @@ opening the HTML directly from disk.
   source files from the existing GitHub Pages Jekyll build.
 
 Projects use native `details`/`summary`, so they work without JavaScript.
-The intro plays on a full page load, can be skipped with Escape or its button,
+The intro plays on a full page load, can be skipped with Escape,
 and has an independent four-second cleanup timer. Its second greeting is 你好.
 The right-side rail uses centered short marks, with a longer bold current mark.
 Hovering or focusing any mark replaces it with the section name; the current
-section name is bold. Links
+section name uses the same regular weight. Links
 jump directly and transfer keyboard focus to the destination. Initial
 hash links remain at their destination after the intro. Reduced-motion preferences show
 a short “Hello · 你好” greeting and static content.
@@ -47,8 +47,8 @@ The sea-side `dist/assets/Avatar.png` is the approved Hero background. The
 other 34 photography files remain local with exact `.gitignore` rules.
 Project screenshots and the favicon remain tracked. The old photography URL
 redirects to the home page. The name scrolls in one direction at twice its
-previous base speed. The Hero location badge, globe, profession arrow, and
-Pause motion control have been removed; profession text occupies the former arrow position.
+previous base speed. The Hero location badge and rotating globe are restored. The profession arrow
+and Pause motion control are removed; profession text occupies the former arrow position.
 Navigation and page sections place About and Experience before Projects.
 The Hero subtitle is “Backend-focused · Distributed systems”.
 
@@ -118,7 +118,6 @@ Reloading resets the page to Home and clears the old section hash; direct
 section URLs still work on a fresh navigation. Browser scroll restoration
 is managed explicitly. Work platform descriptions now stack with 20px between
 them. The selected date/content layout uses roughly a 1:2 ratio with 20px
-dates and 16px locations on desktop. Platform names and muted descriptions
-share a baseline when space permits. Chromium has two concise bullets,
+dates and 16px locations on desktop. Muted platform descriptions sit on the line below their names. Chromium has two concise bullets,
 including the selected backend-infrastructure summary. Navigation rows are
 18px apart, with 6px inactive marks and 10px centered active marks.
