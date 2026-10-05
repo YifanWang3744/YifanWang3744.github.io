@@ -285,12 +285,6 @@ html.motion-running .globe-wrap, html.motion-running .meridian { animation-play-
 /* The subtitle is fitted to the measured title width without stretching glyphs. */
 .hero-role p { width:max-content; }
 .hero-profession { display:block; }
-.hero-metal-word { display:inline-block; }
-@supports (background-clip:text) or (-webkit-background-clip:text) {
-  @media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) {
-    .hero-role.is-metal-active .hero-metal-word { color:transparent; background:linear-gradient(112deg,#e0e6e9 0%,#c1cdd3 37%,#f0f4f7 43%,#fff 48%,#fff 51%,#bac7cf 58%,#d8e1e6 66%,#eef1f3 100%); background-size:240% 100%; background-position:var(--hero-metal-position,50%) center; -webkit-background-clip:text; background-clip:text; text-shadow:0 1px 1px #ffffff10; }
-  }
-}
 .hero-focus { display:block; width:0; min-width:100%; margin-top:12px; font-size:.44em; letter-spacing:0; line-height:1.5; color:rgba(255,255,255,.9); }
 .hero-focus-text { display:inline-block; white-space:nowrap; }
 .brand { display:inline-flex; align-items:center; gap:.21em; padding-block:8px; white-space:nowrap; }

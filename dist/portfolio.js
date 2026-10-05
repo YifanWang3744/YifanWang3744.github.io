@@ -93,50 +93,6 @@
     }
   } catch { finishIntro(); }
 
-  function initializeHeroMetal() {
-    const role = document.querySelector('.hero-role');
-    const title = role?.querySelector('.hero-profession');
-    if (!role || !title) return;
-    const hover = window.matchMedia('(hover: hover) and (pointer: fine)');
-    let x = .5, target = .5, frame = 0, last = 0, visible = true;
-    const enabled = () => hover.matches && !reduced.matches && !document.hidden && visible && !page.inert;
-    function stop() {
-      cancelAnimationFrame(frame);
-      frame = 0;
-      role.classList.remove('is-metal-active');
-      role.style.removeProperty('--hero-metal-position');
-      x = target = .5;
-    }
-    function tick(time) {
-      if (!enabled()) { stop(); return; }
-      const blend = 1 - Math.exp(-Math.min(time - last || 16, 40) / 65);
-      last = time;
-      x += (target - x) * blend;
-      role.style.setProperty('--hero-metal-position', `${(1 - x) * 100}%`);
-      if (Math.abs(target - x) > .0003) frame = requestAnimationFrame(tick);
-      else frame = 0;
-    }
-    function move(event) {
-      if (event.pointerType === 'touch' || !enabled()) return;
-      const box = title.getBoundingClientRect();
-      target = Math.max(0, Math.min(1, (event.clientX - box.left) / Math.max(1, box.width)));
-      role.classList.add('is-metal-active');
-      if (!frame) { last = performance.now(); frame = requestAnimationFrame(tick); }
-    }
-    role.addEventListener('pointerenter', move);
-    role.addEventListener('pointermove', move);
-    role.addEventListener('pointerleave', stop);
-    role.addEventListener('pointercancel', stop);
-    reduced.addEventListener('change', stop);
-    hover.addEventListener('change', stop);
-    window.addEventListener('resize', stop, { passive:true });
-    window.addEventListener('pagehide', stop);
-    document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); });
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(entries => { visible = entries[0].isIntersecting; if (!visible) stop(); }).observe(role);
-    }
-  }
-
   function initializeNavigationComet() {
     const nav = document.querySelector('.top-nav-links');
     const links = [...(nav?.querySelectorAll('a') || [])];
@@ -675,7 +631,7 @@
     document.fonts?.ready.then(fit);
   }
   // Independent enhancements must not make essential content depend on each other.
-  [initializeHeroMetal, initializeNavigationComet, initializeLocationUfo, initializeContactCopy, initializeBuildTitle, initializeSectionNavigation, initializeReveals, initializeMotion, fitHeroSubtitle, fitContentWidths].forEach(initialize => {
+  [initializeNavigationComet, initializeLocationUfo, initializeContactCopy, initializeBuildTitle, initializeSectionNavigation, initializeReveals, initializeMotion, fitHeroSubtitle, fitContentWidths].forEach(initialize => {
     try { initialize(); } catch (error) { console.warn('Portfolio enhancement unavailable:', error); }
   });
 })();

@@ -68,11 +68,6 @@ Leaving the navigation returns the dot to the current page. Native links stay
 functional, and reduced motion uses an immediate dot update without a trail.
 The spring runs only while moving and stops when the navigation leaves the viewport.
 The Hero subtitle is “Backend-focused · Distributed systems”.
-On devices with a mouse, hovering over the Hero role gives “Software Engineer”
-the approved silver metal finish. A soft highlight follows the pointer and
-returns to the original text on leave. Rendering runs only while the highlight
-is moving; hidden or off-screen content stops the effect. Touch devices and
-reduced-motion preferences retain the static text.
 Hovering, focusing, or tapping the Hero location badge plays a decorative UFO flyby.
 Its continuous path joins entry, one orbit, and departure with matching tangents
 and distance-based movement. Repeated triggers do not restart a flight in progress.
