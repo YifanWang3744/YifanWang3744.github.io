@@ -38,6 +38,7 @@
     document.getElementById('page').inert = true;
     // Hold the destination title briefly, then lift the curved curtain.
     setTimeout(() => {
+      window.dispatchEvent(new Event('portfolio:page-revealing'));
       animate(title, [{opacity:1,transform:'translateY(0)'},{opacity:0,transform:'translateY(-50px)'}], {duration:350,easing:'ease-in'});
       animate(bottom, [{height:'12vh'},{height:'0vh'}], {duration:800,easing:'cubic-bezier(.76,0,.24,1)'});
       animate(document.getElementById('page'), [{transform:'translateY(120px)'},{transform:'translateY(0)'}], {duration:800,easing:'cubic-bezier(.22,1,.36,1)'});

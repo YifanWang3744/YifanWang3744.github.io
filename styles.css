@@ -1,0 +1,64 @@
+/* Apple-style typography layer: font + size only */
+
+:root {
+  --apple-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  font-family: var(--apple-font);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Keep headings crisp, with Apple-like compact rhythm */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--apple-font);
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+/* Tailwind utility normalization for current pages */
+.text-4xl {
+  font-size: clamp(2rem, 3.6vw, 2.5rem) !important;
+}
+
+.text-3xl {
+  font-size: clamp(1.5rem, 2.6vw, 1.9rem) !important;
+}
+
+.text-2xl {
+  font-size: clamp(1rem, 1.8vw, 1.1rem) !important;
+}
+
+.text-base {
+  font-size: 1rem !important;
+}
+
+.text-sm {
+  font-size: 0.9rem !important;
+}
+
+p {
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+
+  .text-4xl {
+    font-size: 1.85rem !important;
+  }
+
+  .text-3xl {
+    font-size: 1.4rem !important;
+  }
+}

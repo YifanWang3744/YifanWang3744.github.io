@@ -19,7 +19,7 @@ opening the HTML directly from disk.
 
 - `index.html`: About me page, retaining Hero, About, Experience & Education, Projects, Skills, Contact.
 - `what-i-build/index.html`: What I build page, with an editorial introduction,
-  three capability columns, a project feature, and Contact.
+  three capability columns, and Contact.
 - `dist/page-transitions.js`: Same-origin native page navigation with a curved
   black curtain, destination title, and incoming page motion.
 - `dist/portfolio.css`: Layout, responsive styles, curves, transitions, and
@@ -31,7 +31,7 @@ opening the HTML directly from disk.
 - `_config.yml`: Excludes planning notes, packaging tools, and unused legacy
   source files from the existing GitHub Pages Jekyll build.
 
-Projects use native `details`/`summary`, so they work without JavaScript.
+Projects show their original full descriptions and GitHub links even when collapsed. The technology stack uses native `details`/`summary`, so it works without JavaScript. The +/− indicator distinguishes expansion from external links.
 The multilingual intro plays on a fresh About me load, can be skipped with Escape,
 and has an independent four-second cleanup timer. Its second greeting is 你好.
 What I build uses a short page-title intro. Transitions between the two pages
@@ -39,6 +39,8 @@ skip the greetings, and native links remain functional without JavaScript.
 Reduced motion bypasses the transition, and browser Back/Forward restores
 the page without leaving an overlay or inert content.
 The right-side rail uses centered short marks, with a longer bold current mark.
+On screens up to 700px wide, the rail is hidden and About me sections use
+20px left and right padding instead of reserving space for the rail.
 Hovering or focusing any mark replaces it with the section name; the current
 section name uses the same regular weight. Links
 jump directly and transfer keyboard focus to the destination. Initial
@@ -46,8 +48,8 @@ hash links remain at their destination after the intro. Reduced-motion preferenc
 a short “Hello · 你好” greeting and static content.
 
 The old compiled Tailwind files and scripts are preserved for reference but
-are no longer loaded. Existing untracked user styles and the local resume
-have not been overwritten or added to the new site.
+are no longer loaded. Additional user styles and the resume are preserved in
+the repository; the current pages do not load these styles or link to the resume.
 
 ## Photography and public assets
 
@@ -55,12 +57,27 @@ The sea-side `dist/assets/Avatar.png` is the approved Hero background. The
 other 34 photography files remain local with exact `.gitignore` rules.
 Project screenshots and the favicon remain tracked. The old photography URL
 redirects to the home page. The name scrolls in one direction at twice its
-previous base speed. Its reduced type scale uses 11vw on desktop and 24vw (80–104px) on mobile,
+previous base speed. Its reduced type scale uses 11vw on desktop and 27.6vw (92–120px) on mobile,
 with normal letter spacing. The bottom-left Scroll to explore link is removed. The Hero location badge and rotating globe are restored. The profession arrow is restored above the role text; the Pause motion control
 remains removed.
 The top navigation contains About me and What I build. Within About me,
 page sections place About and Experience before Projects.
+Both pages share a decorative comet indicator: hovering or focusing a navigation
+link moves the current-page dot with a short fading tail and a soft spring finish.
+Leaving the navigation returns the dot to the current page. Native links stay
+functional, and reduced motion uses an immediate dot update without a trail.
+The spring runs only while moving and stops when the navigation leaves the viewport.
 The Hero subtitle is “Backend-focused · Distributed systems”.
+On devices with a mouse, hovering over the Hero role gives “Software Engineer”
+the approved silver metal finish. A soft highlight follows the pointer and
+returns to the original text on leave. Rendering runs only while the highlight
+is moving; hidden or off-screen content stops the effect. Touch devices and
+reduced-motion preferences retain the static text.
+Hovering, focusing, or tapping the Hero location badge plays a decorative UFO flyby.
+Its continuous path joins entry, one orbit, and departure with matching tangents
+and distance-based movement. Repeated triggers do not restart a flight in progress.
+The effect scales with the globe, stops outside the viewport or in a hidden tab,
+and is skipped when reduced motion is requested.
 
 For an explicit public-only package:
 
@@ -68,7 +85,7 @@ For an explicit public-only package:
 python3 scripts/package_site.py
 ```
 
-This writes `outputs/site/` using an allowlist of 12 public files, plus
+This writes `outputs/site/` using an explicit public-file allowlist, plus
 `.nojekyll`. It includes only the approved Avatar photo and never copies the other photos,
 the local resume, internal notes,
 or unused styles. The script only replaces its own generated output folder.
@@ -99,8 +116,8 @@ python3 scripts/package_site.py
 
 Browser checks cover desktop (1440×900), tablet (768×1024), and mobile
 (390×844), the complete intro and Chinese greeting, keyboard project
-disclosures, menu focus and Escape, hash navigation, old URL redirects,
-pause/resume, and missing-script fallbacks. The reduced-motion branch was
+disclosures, page navigation and Escape, hash navigation, old URL redirects,
+clipboard feedback, and missing-script fallbacks. The reduced-motion branch was
 also checked using a temporary local response fixture; this is distinct
 from an independent operating-system preference test.
 
@@ -139,3 +156,24 @@ horizontal pointer movement by up to 7px. The landscape mask clips the whole
 layered scene as it moves during scrolling, independently of hover transforms.
 Reduced-motion preferences keep the illustration static. About me retains the
 sea-side Avatar background.
+
+Both pages provide Open Graph and Twitter sharing metadata, with a shared
+1200×630 sea-side preview image and a separate canonical URL for each page.
+The tab title remains “Yifan Wang · Software Engineer” on both pages.
+The Hero uses responsive WebP versions of the approved photo with a PNG
+fallback. The Titanium main panel uses transparent responsive WebP versions;
+the other original PNG layers are retained. The public-file package includes
+these assets. Mobile Hero subtitles use readable 14px text with natural wrapping.
+
+Motion reads layout before writing styles, caches its element references, and
+only maintains a continuous animation loop while the moving name or Titanium
+scene is near the viewport. Scrolling resumes the loop. Globe rotation pauses
+outside the viewport; reduced-motion behavior remains available.
+
+The current polishing changes are local only. See
+`outputs/portfolio-polish-validation-2026-10-04.md` for the latest validation.
+
+On screens up to 700px wide, the About me Hero uses 85svh with a 560px
+minimum for compact phones. The mobile photo crops more sky, the location
+badge is smaller, and the larger moving name sits closer to the profession.
+Desktop Hero proportions remain unchanged.
